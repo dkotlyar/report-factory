@@ -20,7 +20,7 @@ services:
       - 'POSTGRES_DB=reportfactory'
       
   reportfactory:
-    image: 'vsplatforma.ru/report-factory-jvm:latest'
+    image: 'nexus.vsplatforma.ru/report-factory-jvm:latest'
     volumes:
       - reportfiles:/usr/local/vsplatforma/reports/output
     environment:
