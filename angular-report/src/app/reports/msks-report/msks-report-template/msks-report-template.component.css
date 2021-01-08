@@ -1,0 +1,71 @@
+.page {
+  padding: 5mm;
+
+  font-family: 'Arial', 'Roboto', sans-serif;
+  font-size: 10pt;
+}
+
+.page-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.header, .footer {
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.footer {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.content {
+}
+
+.last-page-footer {
+}
+
+.space-filler {
+  border: 1px solid black;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2mm;
+}
+.title span {
+  margin: 0 2mm;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+table tr {
+  height: 5mm;
+}
+table tr td {
+  border: 1px solid black;
+  vertical-align: center;
+  text-align: left;
+  padding: 1mm;
+}
+table tr td.noborder, table tr.noborder > td {
+  border: none;
+}
+table tr td.center, table tr.center > td, table thead.center > tr > td {
+  text-align: center;
+}
+table td img {
+  max-width: 100%;
+}
+
+.shtrihcod {
+  font-family: 'IDAutomationHC39M', sans-serif;
+}

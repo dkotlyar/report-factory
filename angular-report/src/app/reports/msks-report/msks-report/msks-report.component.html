@@ -1,0 +1,17 @@
+<ng-container *ngFor="let pagesFactory of pagesFactories">
+  <ng-container *ngFor="let page of pagesFactory.pages; let i = index">
+    <app-msks-report-template
+      [page]="page"
+      [pf]="pagesFactory"
+      [index]="i"></app-msks-report-template>
+  </ng-container>
+</ng-container>
+
+<rep-error-page
+  *ngIf="error!==undefined"
+  [error]="error"
+></rep-error-page>
+
+<div class="overlay no-print" *ngIf="!complited">
+  Идет построение отчёта
+</div>

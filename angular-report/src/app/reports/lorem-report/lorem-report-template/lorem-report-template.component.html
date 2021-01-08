@@ -1,0 +1,24 @@
+<div class="page-a4 page">
+  <div #pagediv class="page-content">
+    <div #header class="header">
+      <div *ngIf="index == 0">
+        <h1>Отчёт бла-бла-бла</h1>
+      </div>
+    </div>
+
+    <ng-container *ngFor="let item of page.items; let index = index">
+      <div #content class="content" [class.contentodd]="index % 2">{{item.content}}</div>
+    </ng-container>
+
+    <div class="space-filler" [style]="{height: page.freeHeight + 'px'}">
+      Тут пишите свой текст заполнитель
+    </div>
+
+    <div #footer class="footer">
+      <div *ngIf="index == pages.length - 1" class="last-page-footer">
+        Последняя страница
+      </div>
+      Страница {{index+1}} / {{pages.length}}
+    </div>
+  </div>
+</div>

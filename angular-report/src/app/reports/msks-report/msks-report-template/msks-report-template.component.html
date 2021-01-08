@@ -1,0 +1,275 @@
+<div class="page-a4 page">
+  <div #pagediv class="page-content">
+    <table>
+      <colgroup>
+        <col style="width: 12mm">
+        <col style="width: 12mm">
+        <col style="width: 12mm">
+        <col style="width: 24mm">
+        <col style="width: 36mm">
+        <col style="width:  9mm">
+        <col style="width: 43mm">
+        <col style="width: 21mm">
+        <col style="width: 18mm">
+        <col style="width: 12mm">
+      </colgroup>
+
+      <thead #header style="font-weight: bold" class="center">
+
+        <tr>
+          <td colspan="10" style="padding: 0" class="noborder">
+            <div class="title">
+              <span>Маршрутно-сопроводительная карта СЕ (МСКС)  №</span>
+              <span>{{page.items[0].content.NomerMSKS}}</span>
+            </div>
+            <table>
+              <tr>
+                <td style="width: 25mm" class="center">ЦСЕ</td>
+                <td style="width: 31mm; font-weight: bold">{{page.items[0].content.ModulCSE}}</td>
+                <td style="width: 3mm" class="noborder"></td>
+                <td style="width: 37mm" class="center">Обозначение СЕ</td>
+                <td style="width: 75mm; font-weight: bold" colspan="3">{{page.items[0].content.NoteCSE}}</td>
+                <td style="width: 3mm" class="noborder"></td>
+                <td style="width: 28mm; font-size: 6pt" colspan="2" class="center">Форма: 321-181_Ф1</td>
+              </tr>
+              <tr>
+                <td class="center">Зав.№</td>
+                <td style="font-weight: bold">{{page.items[0].content.ZavNomer}}</td>
+                <td rowspan="2" class="noborder"></td>
+                <td rowspan="2" class="center">Наименование СЕ</td>
+                <td style="font-weight: bold" rowspan="2" colspan="3">{{page.items[0].content.NameCSE}}</td>
+                <td rowspan="2" class="noborder"></td>
+                <td style="font-size: 6pt" colspan="2" class="center">
+                  <span>Дата печати:</span><br />
+                  <span>2021-01-01</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="font-size: 8pt" class="center">Версия ТП</td>
+                <td style="font-size: 8pt">{{page.items[0].content.VerTP}}</td>
+                <td style="font-size: 8pt" class="center">Лист</td>
+                <td style="font-size: 8pt" class="center">{{index + 1}}</td>
+              </tr>
+              <tr>
+                <td style="font-size: 8pt" class="center">Дата утв. ТП</td>
+                <td style="font-size: 8pt">{{page.items[0].content.VerTpUtv}}</td>
+                <td class="noborder"></td>
+                <td style="font-size: 8pt" class="center">Версия КД</td>
+                <td style="font-size: 8pt">{{page.items[0].content.VerSP}}</td>
+                <td class="center">Кол-во</td>
+                <td class="center">1</td>
+                <td class="noborder"></td>
+                <td style="font-size: 8pt" class="center">Листов</td>
+                <td style="font-size: 8pt" class="center">{{pf.numPages}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr class="noborder">
+          <td colspan="10"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2">
+            <span>Цех</span><br />
+            <span style="font-size: 6pt">участок</span>
+          </td>
+          <td rowspan="2">Техн. этап</td>
+          <td rowspan="2">Опер.</td>
+          <td colspan="2" rowspan="2">Наименование операции</td>
+          <td colspan="3">Исполнитель</td>
+          <td rowspan="2">Дата вып.</td>
+          <td rowspan="2">Клеймо</td>
+        </tr>
+        <tr>
+          <td>Таб.</td>
+          <td>Фамилия И.О.</td>
+          <td>Подпись</td>
+        </tr>
+      </thead>
+
+      <ng-container *ngFor="let item of page.items; let index = index">
+        <tbody #content>
+          <ng-container *ngIf="startEtapa(item)">
+            <tr class="noborder">
+              <td colspan="2"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td colspan="5"></td>
+            </tr>
+
+            <tr>
+              <td class="center">{{item.content.CehNumber}}</td>
+              <td class="center"></td>
+              <td colspan="2">Старт этапа</td>
+              <td class="shtrihcod">*{{item.content.ShtrihCod}}*</td>
+              <td></td>
+              <td>Контроллер</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td class="center">{{item.content.CehSector}}</td>
+              <td class="center">{{item.content.EtapNumber}}</td>
+              <td colspan="2">КТ_{{item.content.NomerKT}}</td>
+              <td class="shtrihcod">*{{item.content.ShtrihCod}}*</td>
+              <td></td>
+              <td>Мастер</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </ng-container>
+
+          <tr class="noborder">
+            <td colspan="10"></td>
+          </tr>
+
+          <tr>
+            <td class="center">{{item.content.CehNumber}}</td>
+            <td class="center" rowspan="2">{{item.content.EtapNumber}}</td>
+            <td class="center" rowspan="2">{{item.content.NomerOpTP}}</td>
+            <td colspan="2" rowspan="2">{{item.content.OperName}}</td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+          </tr>
+
+          <tr>
+            <td class="center">{{item.content.CehSector}}</td>
+          </tr>
+
+          <ng-container *ngIf="stopEtapa(item)">
+            <tr class="noborder">
+              <td colspan="2"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td colspan="5"></td>
+            </tr>
+
+            <tr>
+              <td class="center">{{item.content.CehSector}}</td>
+              <td class="center">{{item.content.EtapNumber}}</td>
+              <td colspan="2">КТ_{{item.content.NomerKT}}</td>
+              <td class="shtrihcod">*{{item.content.ShtrihCod}}*</td>
+              <td></td>
+              <td>Мастер</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td class="center">{{item.content.CehNumber}}</td>
+              <td class="center"></td>
+              <td colspan="2">Окончание этапа</td>
+              <td class="shtrihcod">*{{item.content.ShtrihCod}}*</td>
+              <td></td>
+              <td>Контроллер</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </ng-container>
+
+      <tfoot #footer>
+        <tr class="noborder">
+          <td colspan="10"></td>
+        </tr>
+
+        <tr class="noborder">
+          <td colspan="10" style="padding: 0">
+            <div class="space-filler" [style]="{height: page.freeHeight + 'px'}">
+              Изменения (с\з ОКБ, ИИ, ТИИ, ТР, ЖИ, ЖО, РО, акты, ордер, протоколы):
+            </div>
+
+            <table *ngIf="index + 1 === pf.numPages">
+              <tr>
+                <td class="noborder" colspan="5"></td>
+              </tr>
+
+              <tr>
+                <td style="width: 37mm">№ ППУ</td>
+                <td style="width: 37mm"></td>
+                <td style="width: 37mm"></td>
+                <td style="width: 37mm"></td>
+                <td style="width: 56mm"></td>
+              </tr>
+              <tr>
+                <td>№ операций</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Сократили время, час.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Фамилия И.О., подпись бригадира, дата</td>
+              </tr>
+
+              <tr>
+                <td class="noborder" colspan="5"></td>
+              </tr>
+            </table>
+
+            <table *ngIf="index + 1 === pf.numPages">
+              <tr>
+                <td style="width: 43mm">Изменения выданы</td>
+                <td style="width: 34mm" rowspan="3">СЕ соответствует требованиям КД и ТП</td>
+                <td style="width: 25mm">Работник ПРБ</td>
+                <td style="width: 50mm;">Фамилия И.О., подпись, дата</td>
+                <td style="width: 21mm"></td>
+                <td style="width: 28mm;">Дата изготовления</td>
+              </tr>
+              <tr>
+                <td>Изменения выполнены</td>
+                <td>Мастер</td>
+                <td>Фамилия И.О., подпись, дата</td>
+                <td>Предъявил</td>
+                <td>{{page.items[0].content.Master}}</td>
+              </tr>
+              <tr>
+                <td>Изменения проверены</td>
+                <td>Работник ОТК</td>
+                <td>Фамилия И.О., подпись, дата</td>
+                <td>Контроль</td>
+                <td>{{page.items[0].content.RabOTK}}</td>
+              </tr>
+              <tr>
+                <td class="noborder" colspan="5"></td>
+              </tr>
+            </table>
+
+            <table>
+              <tr>
+                <td class="noborder" colspan="2"></td>
+                <td class="noborder" rowspan="3" style="text-align: right">
+                  <img src="assets/gt-logo.png" style="width: 53mm; height: 15mm;" />
+                </td>
+              </tr>
+              <tr>
+                <td>Заказ</td>
+                <td>{{page.items[0].content.Zakaz}}</td>
+              </tr>
+              <tr>
+                <td class="noborder" colspan="2"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
