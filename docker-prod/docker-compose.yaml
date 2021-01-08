@@ -1,0 +1,37 @@
+version: '3'
+services:
+  nginx:
+    image: 'vsplatforma.ru/angular-report-example:latest'
+    ports:
+      - 80:80
+    volumes:
+      - reportfiles:/usr/share/nginx/report-files/
+    depends_on:
+      - reportfactory
+
+  postgresql:
+    image: 'postgres:latest'
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - 'POSTGRES_PASSWORD=qwerty'
+      - 'POSTGRES_DB=reportfactory'
+      
+  reportfactory:
+    image: 'vsplatforma.ru/report-factory-jvm:latest'
+    volumes:
+      - reportfiles:/usr/local/vsplatforma/reports/output
+    environment:
+      - QUARKUS_DATABASE_URL=jdbc:postgresql://postgresql:5432/reportfactory
+      - QUARKUS_DATABASE_USERNAME=postgres
+      - QUARKUS_DATABASE_PASSWORD=qwerty
+      - WEBREPORT_URL=http://nginx/
+      - REPORTS_URL=http://localhost/files/
+    depends_on:
+      - postgresql
+
+volumes:
+  pgdata:
+  reportfiles:

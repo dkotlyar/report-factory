@@ -1,0 +1,48 @@
+<ng-container *ngFor="let pagesFactory of pagesFactories">
+  <ng-container *ngFor="let page of pagesFactory.pages; let i = index">
+    <app-msks-report-template
+      [page]="page"
+      [pf]="pagesFactory"
+      [index]="i"></app-msks-report-template>
+  </ng-container>
+</ng-container>
+
+<rep-error-page
+  *ngIf="error!==undefined"
+  [error]="error"
+></rep-error-page>
+
+<table *ngFor="let pagesFactory of pagesFactories">
+  <thead>
+  <tr>
+    <td colspan="7">Debug</td>
+  </tr>
+  <tr>
+    <td colspan="7">Всего страниц: {{pagesFactory.pages.length}}</td>
+  </tr>
+  <tr>
+    <td>Страница</td>
+    <td>Элемент</td>
+    <td>OperName</td>
+    <td>Высота</td>
+    <td>Высота страницы</td>
+    <td>Шапка и подвал</td>
+    <td>Свободное место</td>
+  </tr>
+  </thead>
+  <tbody *ngFor="let page of pagesFactories[0].pages; let i = index">
+  <tr *ngFor="let item of page.items; let j = index">
+    <td>{{i}}</td>
+    <td>{{j}}</td>
+    <td>{{item.content.OperName}}</td>
+    <td>{{item.height}}</td>
+    <td>{{page.contentHeight}}</td>
+    <td>{{page.headerAndFooterHeight}}</td>
+    <td>{{page.freeHeight}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="overlay no-print" *ngIf="!complited">
+  Идет построение отчёта
+</div>

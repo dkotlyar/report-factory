@@ -1,0 +1,10 @@
+<ng-container *ngFor="let page of pagesFactory.pages; let i = index">
+  <app-lorem-report-template
+    [page]="page"
+    [pages]="pagesFactory.pages"
+    [index]="i"></app-lorem-report-template>
+</ng-container>
+
+<div class="overlay no-print" *ngIf="!pagesFactory.complited">
+  Идет построение отчёта
+</div>

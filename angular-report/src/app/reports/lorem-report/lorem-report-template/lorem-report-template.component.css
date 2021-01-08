@@ -1,0 +1,49 @@
+.page {
+  padding-top: 20mm;
+  padding-left: 25mm;
+  padding-bottom: 20mm;
+  padding-right: 15mm;
+}
+
+.page-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.header, .footer {
+  overflow: hidden;
+  border: 20px solid green;
+  box-sizing: border-box;
+}
+
+.header > div {
+  margin-bottom: 10mm;
+}
+
+.footer {
+  text-align: center;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.content {
+  border: 10px solid blue;
+}
+
+.last-page-footer {
+  padding-top: 30mm;
+  border: 1px solid deeppink;
+}
+
+.space-filler {
+  background-color: brown;
+  width: 100%;
+}
+
+.contentodd {
+  background-color: yellow;
+  border-width: 50px;
+}
