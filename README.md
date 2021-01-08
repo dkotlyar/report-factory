@@ -6,7 +6,7 @@
 2. template - определение шаблона отчёта
 2.1. для web-отчётов будет открыт сайт с адресом {http://WEBREPORT_URL}/{template}/{uuid} и на его основе сформирован pdf.
 
-`curl --location --request POST 'http://localhost/report/web/msks/' --header 'Content-Type: text/plain' --data '@example-msks.csv'`
+`curl --location --request POST 'http://localhost/report/web/msks/' --header 'Content-Type: text/plain' --data-binary '@example-msks.csv'`
 
 `{"uuid":"2c96808376e1406d0176e184aae40002"}`
 
