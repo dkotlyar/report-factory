@@ -1,4 +1,4 @@
-package ru.vsplatforma.reportfactory.report;
+package ru.dkotlyar.reportfactory.report;
 
 public class RegisterReportResponse {
     private String uuid;

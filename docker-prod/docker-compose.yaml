@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx:
-    image: 'vsplatforma.ru/angular-report-example:latest'
+    image: 'dkotlyar/angular-report-example:latest'
     ports:
       - 80:80
     volumes:
@@ -20,9 +20,9 @@ services:
       - 'POSTGRES_DB=reportfactory'
       
   reportfactory:
-    image: 'nexus.vsplatforma.ru/report-factory-jvm:latest'
+    image: 'dkotlyar/report-factory-jvm:latest'
     volumes:
-      - reportfiles:/usr/local/vsplatforma/reports/output
+      - reportfiles:/usr/local/dkotlyar/reports/output
     environment:
       - QUARKUS_DATABASE_URL=jdbc:postgresql://postgresql:5432/reportfactory
       - QUARKUS_DATABASE_USERNAME=postgres
