@@ -9,6 +9,6 @@
     "tslib": "^2.0.0"
   },
   "publishConfig": {
-    "registry": "http://192.168.122.10:8081/repository/npm-private/"
+    "registry": "http://registry.npmjs.org/"
   }
 }
