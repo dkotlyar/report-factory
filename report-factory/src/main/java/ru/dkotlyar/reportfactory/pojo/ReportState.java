@@ -1,4 +1,4 @@
-package ru.vsplatforma.reportfactory.pojo;
+package ru.dkotlyar.reportfactory.pojo;
 
 public enum ReportState {
     New,

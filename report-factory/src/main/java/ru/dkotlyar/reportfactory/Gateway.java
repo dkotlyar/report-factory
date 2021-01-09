@@ -1,10 +1,10 @@
-package ru.vsplatforma.reportfactory;
+package ru.dkotlyar.reportfactory;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import ru.vsplatforma.reportfactory.pojo.ReportObject;
-import ru.vsplatforma.reportfactory.pojo.ReportState;
-import ru.vsplatforma.reportfactory.report.GetStatusReportResponse;
-import ru.vsplatforma.reportfactory.report.RegisterReportResponse;
+import ru.dkotlyar.reportfactory.pojo.ReportObject;
+import ru.dkotlyar.reportfactory.pojo.ReportState;
+import ru.dkotlyar.reportfactory.report.GetStatusReportResponse;
+import ru.dkotlyar.reportfactory.report.RegisterReportResponse;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;

@@ -1,4 +1,4 @@
-package ru.vsplatforma.reportfactory;
+package ru.dkotlyar.reportfactory;
 
 import java.io.IOException;
 

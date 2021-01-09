@@ -1,15 +1,12 @@
-package ru.vsplatforma.reportfactory;
+package ru.dkotlyar.reportfactory;
 
-import ru.vsplatforma.reportfactory.pojo.ReportObject;
-import ru.vsplatforma.reportfactory.pojo.ReportState;
+import ru.dkotlyar.reportfactory.pojo.ReportObject;
+import ru.dkotlyar.reportfactory.pojo.ReportState;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.ws.rs.ext.Provider;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
 
 @Singleton

@@ -1,4 +1,4 @@
-package ru.vsplatforma.reportfactory.pojo;
+package ru.dkotlyar.reportfactory.pojo;
 
 import org.hibernate.annotations.GenericGenerator;
 

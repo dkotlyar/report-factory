@@ -1,9 +1,9 @@
-package ru.vsplatforma.reportfactory;
+package ru.dkotlyar.reportfactory;
 
 import io.quarkus.scheduler.Scheduled;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import ru.vsplatforma.reportfactory.pojo.ReportObject;
-import ru.vsplatforma.reportfactory.pojo.ReportState;
+import ru.dkotlyar.reportfactory.pojo.ReportObject;
+import ru.dkotlyar.reportfactory.pojo.ReportState;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -15,7 +15,6 @@ import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermission;
-import java.text.Format;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

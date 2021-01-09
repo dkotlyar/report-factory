@@ -11,8 +11,8 @@ RUN apt update && \
 RUN ln -s /usr/bin/chromium /usr/bin/chromium-browser
 
 RUN mkdir /jar
-RUN mkdir -p /usr/local/vsplatforma/reports/REPORTS
-RUN mkdir -p /usr/local/vsplatforma/reports/output
+RUN mkdir -p /usr/local/dkotlyar/reports/REPORTS
+RUN mkdir -p /usr/local/dkotlyar/reports/output
 RUN mkdir -p /root/.local/share/fonts
 
 COPY ./target/report-factory-1.0.0-SNAPSHOT-runner.jar /jar
