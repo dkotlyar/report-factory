@@ -1,0 +1,13 @@
+.readme {
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 8px;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+pre {
+    border: 1px solid black;
+    padding: 5px;
+}
