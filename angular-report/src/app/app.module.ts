@@ -10,8 +10,10 @@ import {MsksReportTemplateComponent} from './reports/msks-report/msks-report-tem
 import {ReportLibModule} from 'report-lib';
 import {HttpClientModule} from '@angular/common/http';
 import { MsksTestComponent } from './reports/msks-report/msks-test/msks-test.component';
+import { ReadmeComponent } from './readme/readme.component';
 
 const appRoutes: Routes = [
+  {path: '', component: ReadmeComponent},
   {path: 'lorem', component: LoremReportComponent},
   {path: 'msks', component: MsksTestComponent},
   {path: 'msks/:id', component: MsksReportComponent},
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     LoremReportTemplateComponent,
     MsksReportComponent,
     MsksReportTemplateComponent,
-    MsksTestComponent
+    MsksTestComponent,
+    ReadmeComponent
   ],
   imports: [
     BrowserModule,

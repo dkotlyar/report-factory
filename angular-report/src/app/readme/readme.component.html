@@ -1,0 +1,149 @@
+<div class="readme">
+    <h1>Описание библиотеки report-lib</h1>
+
+    <h2>Быстрый старт</h2>
+
+    <p>
+        Создайте приложение angular:
+    </p>
+    <pre class="bash">ng new my-report</pre>
+
+    <p>
+        Установите библиотеку report-lib. <u>Примечание:</u> требуется доступ к репозитурию http://192.168.122.10:8081/repository/npm-group/
+    </p>
+    <pre class="bash">npm i report-lib</pre>
+
+    <p>
+        В файле src/styles.css добавьте импорт стиля:
+    </p>
+    <pre class="code">@import '~report-lib/index.css';</pre>
+
+    <p>
+        Создайте компоненту шаблона отчёта
+    </p>
+    <pre class="bash">ng g component my-report-template</pre>
+
+    <p>
+        В созданной компоненте добавьте наследование от класса BaseReportComponent.
+    </p>
+    <p>
+        В шаблоне компоненты опишите основную структуру:
+    </p>
+    <pre class="code">
+        &lt;div class="page-a4 page"&gt;
+            &lt;div #pagediv class="page-content"&gt;
+                &lt;!-- тут будет код шаблона &gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </pre>
+
+    <p>
+        В качестве кода шаблона пропишите три основные компоненты, из которых состоит страница отчёта: #header, #footer, #content.
+        Обязательным является только компонента #content, которая должна быть объявлена в цикле ngFor.
+        Пример:
+    </p>
+    <pre>
+        &lt;table&gt;
+            &lt;tr #header&gt;
+                &lt;td&gt;№ п/п&lt;/td&gt;
+                &lt;td&gt;Содержимое&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;ng-container *ngFor="let content of page.items; let npp = index"&gt;
+                &lt;td&gt;<span ngNonBindable>{{npp}}</span>&lt;/td&gt;
+                &lt;td&gt;<span ngNonBindable>{{content}}</span>&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    </pre>
+
+    <p>
+        Создайте компоненту отчёта
+    </p>
+    <pre class="bash">ng g component my-report</pre>
+
+    <p>
+        Загрузите в ней данные и создайте экземпляр класса PagesFactory.
+        Выполните функцию splitPages().
+        Проитерируйте страницы и на каждую страницу в шаблоне вызовите ваш созданный шаблон my-report-template.
+        В качестве параметров задайте [page], [pf], [index]
+    </p>
+
+    <h2>Описание методов и полей PagesFactory</h2>
+    <h3>constructor(DATA, CONTENT)</h3>
+    <p>
+        В качестве объекта DATA задайте произвольный массив. Данный массив в последующем будет делиться на страницы.
+        Данные массива DATA будут записаны в поле items объекта Page.
+    </p>
+    <p>
+        Также необязательно можно передать объект CONTENT. Данный объект будет записан в поле content объекта Page.
+    </p>
+
+    <h3>pages: Array&lt;Page&gt;</h3>
+    <p>
+        Поле pages возвращает все страницы отчёта. Read-only.
+    </p>
+
+    <h3>numPages: number</h3>
+    <p>
+        Поле numPages возвращает количество страниц отчёта. Read-only.
+    </p>
+
+    <h3>items: Array&lt;PageItem&gt;</h3>
+    <p>
+        Поле items возвращает массив DATA обернутый в объект PageItem. Read-only.
+    </p>
+
+    <h3>complited: boolean</h3>
+    <p>
+        Возвращает true когда построение отчёта завершено, в противном случае false. Read-only.
+    </p>
+
+    <h3>maximumSplitIterations: number</h3>
+    <p>
+        Задает максимальное количество итераций построения отчёта. По-умолчанию 5.
+        Read-Write
+    </p>
+
+    <h3>splitPages()</h3>
+    <p>
+        Вызывает цепочку функций для разделения исходного массива DATA на страницы.
+    </p>
+
+    <h3>reset()</h3>
+    <p>
+        Сбрасывает счётчик итераций построения отчёта и повторно вызывает метод splitPages() для имеющихся данных.
+    </p>
+
+    <h2>Описание полей класса Page</h2>
+    <h3>content: any</h3>
+    <p>
+        Поле content содержит произвольный объект, переданный в качестве параметра CONTENT в конструктор PagesFactory.
+    </p>
+
+    <h3>items: Array&lt;PageItem&gt;</h3>
+    <p>
+        Поле items содержит массив PageItem, хранящийся для данной страницы
+    </p>
+
+    <h3>freeHeight: number</h3>
+    <p>
+        Поле freeHeight содержит высоту свободного места на странице.
+        Может быть использовано в шаблоне для заполнения свободного пространства.
+    </p>
+
+    <h3>minimumFreeHeight: number</h3>
+    <p>
+        Требуемое свободное место на странице. Задается в пикселях.
+        Read-Write.
+    </p>
+
+    <h2>Описание полей класса PageItem</h2>
+    <h3>content: any</h3>
+    <p>
+        Содержит элемент массива DATA, переданный в качестве параметра в конструктор PagesFactory.
+    </p>
+
+    <h3>pageNum: number</h3>
+    <p>
+        Содержит индекс страницы, на которой данный объект располагается.
+    </p>
+</div>

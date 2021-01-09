@@ -7,9 +7,15 @@ export class PagesFactory {
   private complitedFlag = false;
   private styles: ComputedStyles;
 
+  // Текущее количество итераций построения отчёта
   private splitIteration = 0;
+
+  // Задает максимальное количество итераций построения отчёта.
   public maximumSplitIterations = 5;
 
+  // В качестве объекта DATA задайте произвольный массив. Данный массив в последующем будет делиться на страницы.
+  // Данные массива DATA будут записаны в поле items объекта Page.
+  // Также необязательно можно передать объект CONTENT. Данный объект будет записан в поле content объекта Page.
   constructor(DATA: any, CONTENT: any = {}) {
     this.styles = new ComputedStyles();
 
@@ -22,14 +28,17 @@ export class PagesFactory {
     this.pagesArr.push(page);
   }
 
+  // Возвращает все страницы отчёта. Read-only.
   get pages(): Array<Page> {
     return this.pagesArr;
   }
 
+  // Возвращает количество страниц отчёта. Read-only.
   get numPages(): number {
     return this.pages.length;
   }
 
+  // Возвращает массив DATA обернутый в объект PageItem. Read-only.
   get items(): Array<PageItem> {
     const items = [];
     this.pages.forEach((page) => {
@@ -38,16 +47,19 @@ export class PagesFactory {
     return items;
   }
 
+  // Возвращает true когда построение отчёта завершено, в противном случае false. Read-only.
   get complited(): boolean {
     return this.complitedFlag;
   }
 
+  // Вызывает цепочку функций для разделения исходного массива DATA на страницы.
   public splitPages(): void {
     setTimeout(() => {
       this.splitPage(0);
     });
   }
 
+  // Сбрасывает счётчик итераций построения отчёта и повторно вызывает метод splitPages() для имеющихся данных.
   public reset(): void {
     this.splitIteration = 0;
     this.complitedFlag = false;
