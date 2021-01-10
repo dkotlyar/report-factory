@@ -1,4 +1,7 @@
-# Описание библиотеки report-lib
+# Description report-lib
+
+Library for generate paper reports with Angular projects. 
+This package automatically split your data in several pages.
 
 ## Быстрый старт
 
