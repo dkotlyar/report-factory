@@ -103,7 +103,7 @@ export class PagesFactory {
     }
 
     let summarySize = this.getHeaderAndFooterHeights(page).reduce((a, b) => a + b);
-    let splitNumber = 0;
+    let splitNumber = -1;
     let normalized = true;
     let freeHeight = 0;
     const pageHeight = this.getPageHeight(page);
@@ -126,7 +126,7 @@ export class PagesFactory {
       summarySize += itemHeight;
     });
 
-    if (!normalized && splitNumber > 0 || pageNumber < this.pagesArr.length - 1) {
+    if (!normalized && splitNumber >= 0 || pageNumber < this.pagesArr.length - 1) {
       setTimeout(() => {
         const splc = this.pagesArr[pageNumber].items.splice(splitNumber + 1).map(item => {
           item.pageNum = pageNumber + 1;

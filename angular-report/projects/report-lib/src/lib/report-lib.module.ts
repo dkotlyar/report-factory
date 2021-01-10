@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReportLibComponent } from './report-lib.component';
 import {BaseReportTemplateComponent} from './base-report-template/base-report-template.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { PageA4Directive } from './page-a4.directive';
 
 
 
@@ -9,14 +10,16 @@ import { ErrorPageComponent } from './error-page/error-page.component';
   declarations: [
     ReportLibComponent,
     BaseReportTemplateComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    PageA4Directive
   ],
   imports: [
   ],
   exports: [
     ReportLibComponent,
     BaseReportTemplateComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    PageA4Directive
   ]
 })
 export class ReportLibModule { }

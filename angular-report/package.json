@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "lib:build": "ng build report-lib --prod && npm run lib:copycss",
+    "lib:build": "ng build report-lib --prod",
     "lib:watch": "ng build report-lib --watch",
     "lib:copycss": "cp projects/report-lib/index.css dist/report-lib/ && cp -r projects/report-lib/assets dist/report-lib/",
     "lib:publish": "npm run lib:build && cd dist/report-lib && npm pack && npm publish"
@@ -26,7 +26,6 @@
     "angular2-csv2json": "^1.1.1",
     "ngx-papaparse": "^5.0.0",
     "npm": "^6.14.10",
-    "report-lib": "0.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
