@@ -13,7 +13,16 @@
 5. В созданной компоненте добавьте наследование от класса BaseReportComponent.
 6. В шаблоне компоненты опишите основную структуру:
     ```
-    <div class="page-a4 page">
+    <div repPageA4>
+        <div #pagediv class="page-content">
+            <!-- тут будет код шаблона -->
+        </div>
+    </div>
+    ```
+   
+   Для ландшафтной ориентации использовать структуру:
+    ```
+    <div repPageA4 class="report-landscape">
         <div #pagediv class="page-content">
             <!-- тут будет код шаблона -->
         </div>
@@ -30,8 +39,8 @@
             <td>Содержимое</td>
         </tr>
         <ng-container *ngFor="let content of page.items; let npp = index">
-            <td><span ngNonBindable>{{npp}}</span></td>
-            <td><span ngNonBindable>{{content}}</span></td>
+            <td>{{npp}}</td>
+            <td>{{content}}</td>
         </tr>
     </table>
     ```
