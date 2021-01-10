@@ -5,6 +5,10 @@
   "license": "MIT",
   "description": "Library for generate paper reports with Angular projects. This package automatically split your data in several pages",
   "keywords": ["angular", "report"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dkotlyar/report-lib"
+  },
   "bugs": {
     "email": "dm.kotlyar@yandex.ru"
   },
