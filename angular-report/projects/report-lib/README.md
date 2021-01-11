@@ -25,12 +25,14 @@ This package automatically split your data in several pages.
    
    Для ландшафтной ориентации использовать структуру:
     ```
-    <div repPageA4 class="report-landscape">
+    <div repPageA4="landscape">
         <div #pagediv class="page-content">
             <!-- тут будет код шаблона -->
         </div>
     </div>
     ```
+   Также для задания ориентации страницы можно использовать классы 
+   report-portrait и report-landscape.
 
 7. В качестве кода шаблона пропишите три основные компоненты, из которых состоит страница отчёта: #header, #footer, #content.
 Обязательным является только компонента #content, которая должна быть объявлена в цикле ngFor.
@@ -61,7 +63,7 @@ This package automatically split your data in several pages.
 Данные массива DATA будут записаны в поле items объекта Page.
 Также необязательно можно передать объект CONTENT. Данный объект будет записан в поле content объекта Page.
 
-### pages: Array<Page>
+### pages: Array\<Page>
 **Read-only.**
 
 Поле pages возвращает все страницы отчёта. 
@@ -71,7 +73,7 @@ This package automatically split your data in several pages.
 
 Поле numPages возвращает количество страниц отчёта.
 
-### items: Array<PageItem>
+### items: Array\<PageItem>
 **Read-only.**
 
 Поле items возвращает массив DATA обернутый в объект PageItem.
@@ -96,7 +98,7 @@ This package automatically split your data in several pages.
 ### content: any
 Поле content содержит произвольный объект, переданный в качестве параметра CONTENT в конструктор PagesFactory.
 
-### items: Array<PageItem>
+### items: Array\<PageItem>
 Поле items содержит массив PageItem, хранящийся для данной страницы
 
 ### freeHeight: number
