@@ -29,7 +29,6 @@ public class Gateway {
     public Response registerReport(@PathParam("type") String type,
                            @PathParam("template") String template,
                            String blob) {
-
         ReportObject reportObject = new ReportObject();
         reportObject.setType(type);
         reportObject.setTemplate(template);
@@ -49,7 +48,13 @@ public class Gateway {
     @Path("/blob/{id}")
     @Transactional
     public String getReportData(@PathParam("id") String id) {
-        return reportStore.get(id).getBlob();
+        ReportObject reportObject = reportStore.get(id);
+
+        if (reportObject == null) {
+            return "";
+        }
+
+        return reportObject.getBlob();
     }
 
     @GET
@@ -58,6 +63,12 @@ public class Gateway {
     @Transactional
     public Response getStatusReport(@PathParam("id") String id, @HeaderParam("Origin") String origin) {
         ReportObject reportObject = reportStore.get(id);
+
+        if (reportObject == null) {
+            return Response
+                    .status(404)
+                    .build();
+        }
 
         GetStatusReportResponse statusReportResponse = new GetStatusReportResponse();
         statusReportResponse.setUuid(reportObject.getUuid());
