@@ -1,4 +1,4 @@
-<div repPageA4 [class.report-landscape]="index % 2">
+<div [repPageA4]="(index % 2) ? 'landscape' : 'portrait'">
   <div #pagediv class="page-content">
     <table>
       <colgroup>

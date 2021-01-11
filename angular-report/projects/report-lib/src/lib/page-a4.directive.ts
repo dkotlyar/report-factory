@@ -5,6 +5,17 @@ import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 })
 export class PageA4Directive implements OnInit{
 
+  @Input() set repPageA4(orientation: 'portrait' | 'landscape') {
+    this.el.nativeElement.classList.remove('report-landscape');
+    this.el.nativeElement.classList.remove('report-portrait');
+
+    if (orientation === 'landscape') {
+      this.el.nativeElement.classList.add('report-landscape');
+    } else {
+      this.el.nativeElement.classList.add('report-portrait');
+    }
+  }
+
   constructor(private el: ElementRef<HTMLDivElement>) {
   }
 
