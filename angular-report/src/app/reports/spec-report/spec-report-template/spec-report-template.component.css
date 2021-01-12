@@ -1,9 +1,9 @@
 div.gost2-106-96 {
-    --borderStyle: 1mm solid black;
-    --borderThikStyle: 1mm solid black;
+    --borderStyle: 0.75mm solid black;
 
     font-family: 'Arial', 'Roboto', sans-serif;
-    font-size: 12pt;
+    font-size: 3.5mm;
+    font-style: italic;
 }
 
 div.gost2-106-96 .page {
@@ -20,7 +20,7 @@ div.gost2-106-96 .page-content {
 
 table.gost2-106-96 {
     border-collapse: collapse;
-    border: var(--borderThikStyle);
+    border: var(--borderStyle);
     border-spacing: 0;
     width: 100%;
     table-layout:fixed;
@@ -37,4 +37,16 @@ table.gost2-106-96 tr {
 }
 table.gost2-106-96 td {
     border: var(--borderStyle);
+}
+
+.vertical-bt-tp {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+}
+
+.empty-space {
+    border: var(--borderStyle);
+    box-sizing: border-box;
+    border-top: hidden;
 }

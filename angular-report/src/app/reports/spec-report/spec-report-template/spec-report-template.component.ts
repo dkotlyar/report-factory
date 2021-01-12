@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BaseReportTemplateComponent, PageItem} from 'report-lib';
 
 @Component({
@@ -13,6 +13,8 @@ export class SpecReportTemplateComponent extends BaseReportTemplateComponent imp
   constructor() { super(); }
 
   ngOnInit(): void {
+    this.page.minimumFreeHeight = 20;
+
     setTimeout(() => {
       this.page.components.first.nativeElement.childNodes.forEach(child => {
         const tagName = (child as HTMLElement).tagName;
@@ -37,10 +39,24 @@ export class SpecReportTemplateComponent extends BaseReportTemplateComponent imp
     return lastItem === undefined || lastItem.content.CLASSIF !== item.content.CLASSIF;
   }
 
-  emptyLines(): Array<any> {
-    if (this.page.freeHeight === undefined || this.rowHeight === undefined || this.rowHeight <= 0) { return []; }
+  get emptyLines(): Array<number> {
+    if (this.page.freeHeight === undefined || this.rowHeight === undefined) {
+      return [];
+    }
 
-    const arrLen = Math.ceil(this.page.freeHeight / this.rowHeight);
-    return new Array(arrLen);
+    if (this.rowHeight <= 0) {
+      return [];
+    } else {
+      let arrLen = Math.floor(this.page.freeHeight / this.rowHeight);
+      arrLen = Math.max(0, arrLen - 1);
+      return new Array(arrLen).fill(this.rowHeight);
+    }
+  }
+
+  get emptySpace(): number {
+    if (this.page.freeHeight === undefined) {
+      return 0;
+    }
+    return this.page.freeHeight - this.emptyLines.reduce((a, b) => a + b, 0);
   }
 }

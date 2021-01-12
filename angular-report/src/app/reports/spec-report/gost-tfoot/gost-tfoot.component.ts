@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-gost-tfoot',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gost-tfoot.component.css']
 })
 export class GostTfootComponent implements OnInit {
+
+  @Input() name: string;
+  @Input() note: string;
+  @Input() numPage: number;
+  @Input() numPages: number;
 
   constructor() { }
 

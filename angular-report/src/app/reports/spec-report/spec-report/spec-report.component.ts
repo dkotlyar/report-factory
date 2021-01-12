@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
     selector: 'app-spec-report',
     templateUrl: './spec-report.component.html',
-    styleUrls: ['./spec-report.component.css']
+    styleUrls: ['./spec-report.component.css', '../../../app.component.css']
 })
 export class SpecReportComponent implements OnInit {
 
@@ -23,7 +23,11 @@ export class SpecReportComponent implements OnInit {
 
         this.spec.getReportData(id)
             .then(data => {
-                this.pagesFactory = new PagesFactory(data);
+                const content = {
+                    NAME: data[0].SPEC_NMK_NAME,
+                    NOTE: data[0].SPEC_NMK_NOTE
+                };
+                this.pagesFactory = new PagesFactory(data, content);
                 this.pagesFactory.splitPages();
             })
             .catch(e => this.error = e);
