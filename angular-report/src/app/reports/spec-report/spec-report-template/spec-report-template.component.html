@@ -1,0 +1,98 @@
+<div repPageA4="portrait" class="gost2-106-96">
+    <div #pagediv class="page-content">
+        <table class="gost2-106-96">
+            <colgroup>
+                <col style="width: 6mm">
+                <col style="width: 6mm">
+                <col style="width: 8mm">
+                <col style="width: 70mm">
+                <col style="width: 63mm">
+                <col style="width: 10mm">
+                <col style="width: 22mm">
+            </colgroup>
+
+            <thead #header>
+                <tr style="text-align: center">
+                    <td>Формат</td>
+                    <td>Зона</td>
+                    <td>Поз.</td>
+                    <td>Обозначение</td>
+                    <td>Наименование</td>
+                    <td>Кол.</td>
+                    <td>Примечание</td>
+                </tr>
+            </thead>
+
+            <ng-container *ngFor="let item of page.items; let index = index">
+                <tbody #content>
+                    <ng-container *ngIf="startGroup(item, index)">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="font-weight: bold; text-align: center; text-decoration: underline;">{{item.content.CLASSIF}}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </ng-container>
+
+                    <tr repMultirow>
+                        <td>{{item.content.FORMAT}}</td>
+                        <td>{{item.content.ZONE}}</td>
+                        <td>{{item.content.POSITION}}</td>
+                        <td>{{item.content.NOTE}}</td>
+                        <td>{{item.content.NAME}}</td>
+                        <td>{{item.content.QUANTITY}}</td>
+                        <td>{{item.content.COMMENT}}</td>
+                    </tr>
+
+                    <tr #standartRow>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </ng-container>
+
+            <tbody>
+                <tr *ngFor="let empty of emptyLines()">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div #footer>
+            <app-gost-tfoot></app-gost-tfoot>
+        </div>
+    </div>
+</div>

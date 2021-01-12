@@ -1,0 +1,13 @@
+table.gost2-104-06 {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    width: 185mm;
+    height: 55mm;
+}
+
+table.gost2-104-06 tr {
+    height: 5mm;
+}
+table.gost2-104-06 td {
+    border: var(--borderStyle);
+}

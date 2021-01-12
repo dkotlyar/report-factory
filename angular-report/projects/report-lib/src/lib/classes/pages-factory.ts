@@ -70,14 +70,14 @@ export class PagesFactory {
     const heights = [0, 0, 0];
 
     if (page.header !== undefined) {
-      heights[0] = this.styles.getOuterHeight(page.header.nativeElement);
+      heights[0] = this.styles.getOuterHeight(page.header.nativeElement) || 0;
     }
 
     if (page.footer !== undefined) {
-      heights[1] = this.styles.getOuterHeight(page.footer.nativeElement);
+      heights[1] = this.styles.getOuterHeight(page.footer.nativeElement) || 0;
     }
 
-    heights[2] = page.minimumFreeHeight;
+    heights[2] = page.minimumFreeHeight || 0;
 
     return heights;
   }
