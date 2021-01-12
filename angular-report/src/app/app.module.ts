@@ -11,10 +11,14 @@ import {ReportLibModule} from 'report-lib';
 import {HttpClientModule} from '@angular/common/http';
 import { MsksTestComponent } from './reports/msks-report/msks-test/msks-test.component';
 import { ReadmeComponent } from './readme/readme.component';
+import { SpecReportComponent } from './reports/spec-report/spec-report/spec-report.component';
+import { SpecReportTemplateComponent } from './reports/spec-report/spec-report-template/spec-report-template.component';
+import { GostTfootComponent } from './reports/spec-report/gost-tfoot/gost-tfoot.component';
 
 const appRoutes: Routes = [
   {path: '', component: ReadmeComponent},
   {path: 'lorem', component: LoremReportComponent},
+  {path: 'spec', component: SpecReportComponent},
   {path: 'msks', component: MsksTestComponent},
   {path: 'msks/:id', component: MsksReportComponent},
 ];
@@ -27,7 +31,10 @@ const appRoutes: Routes = [
     MsksReportComponent,
     MsksReportTemplateComponent,
     MsksTestComponent,
-    ReadmeComponent
+    ReadmeComponent,
+    SpecReportComponent,
+    SpecReportTemplateComponent,
+    GostTfootComponent
   ],
   imports: [
     BrowserModule,

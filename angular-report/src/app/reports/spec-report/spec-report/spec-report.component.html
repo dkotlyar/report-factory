@@ -1,0 +1,17 @@
+<ng-container *ngIf="pagesFactory !== undefined">
+    <ng-container *ngFor="let page of pagesFactory.pages; let i = index">
+        <app-spec-report-template
+                [page]="page"
+                [pf]="pagesFactory"
+                [index]="i"></app-spec-report-template>
+    </ng-container>
+
+    <div class="overlay no-print" *ngIf="!complited">
+        Идет построение отчёта
+    </div>
+</ng-container>
+
+<rep-error-page
+        *ngIf="error!==undefined"
+        [error]="error"
+></rep-error-page>

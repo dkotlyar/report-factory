@@ -68,7 +68,7 @@ public class ReportScheduller {
                             "chromium-browser --headless --disable-gpu --no-sandbox --disable-web-security " +
                                     "--allow-insecure-localhost --allow-file-access-from-files --no-margins " +
                                     "--print-to-pdf-no-header --no-first-run --disable-software-rasterizer " +
-                                    "--disable-translate --disable-extensions --disable-setuid-sandbox" +
+                                    "--disable-translate --disable-extensions --disable-setuid-sandbox " +
                                     "--run-all-compositor-stages-before-draw --virtual-time-budget=100000 " +
                                     "--print-to-pdf=" + reportObject.getFileName() + " " +
                                     weburl + reportObject.getTemplate() + "/" + reportObject.getUuid());

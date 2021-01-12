@@ -3,7 +3,8 @@ package ru.dkotlyar.reportfactory.report;
 public class GetStatusReportResponse {
     private String uuid;
     private String status;
-    private String file;
+    private String url;
+    private String filename;
     private String errorMsg;
 
     public String getUuid() {
@@ -22,12 +23,20 @@ public class GetStatusReportResponse {
         this.status = status;
     }
 
-    public String getFile() {
-        return file;
+    public String getUrl() {
+        return url;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public String getErrorMsg() {

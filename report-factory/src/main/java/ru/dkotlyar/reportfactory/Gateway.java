@@ -47,14 +47,18 @@ public class Gateway {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/blob/{id}")
     @Transactional
-    public String getReportData(@PathParam("id") String id) {
+    public Response getReportData(@PathParam("id") String id) {
         ReportObject reportObject = reportStore.get(id);
 
         if (reportObject == null) {
-            return "";
+            return Response
+                    .status(404)
+                    .build();
         }
 
-        return reportObject.getBlob();
+        return Response
+                .ok(reportObject.getBlob())
+                .build();
     }
 
     @GET
@@ -75,7 +79,8 @@ public class Gateway {
         statusReportResponse.setStatus(reportObject.getState().toString());
 
         if (reportObject.getState() == ReportState.Done) {
-            statusReportResponse.setFile(fileurl + reportObject.getFileName());
+            statusReportResponse.setFilename(reportObject.getFileName());
+            statusReportResponse.setUrl(fileurl + reportObject.getFileName());
         }
         if (reportObject.getState() == ReportState.Error) {
             statusReportResponse.setErrorMsg(reportObject.getError());
