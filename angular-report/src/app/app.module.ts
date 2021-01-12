@@ -14,11 +14,13 @@ import { ReadmeComponent } from './readme/readme.component';
 import { SpecReportComponent } from './reports/spec-report/spec-report/spec-report.component';
 import { SpecReportTemplateComponent } from './reports/spec-report/spec-report-template/spec-report-template.component';
 import { GostTfootComponent } from './reports/spec-report/gost-tfoot/gost-tfoot.component';
+import { SpecTestComponent } from './reports/spec-report/spec-test/spec-test.component';
 
 const appRoutes: Routes = [
   {path: '', component: ReadmeComponent},
   {path: 'lorem', component: LoremReportComponent},
-  {path: 'spec', component: SpecReportComponent},
+  {path: 'spec', component: SpecTestComponent},
+  {path: 'spec/:id', component: SpecReportComponent},
   {path: 'msks', component: MsksTestComponent},
   {path: 'msks/:id', component: MsksReportComponent},
 ];
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     ReadmeComponent,
     SpecReportComponent,
     SpecReportTemplateComponent,
-    GostTfootComponent
+    GostTfootComponent,
+    SpecTestComponent
   ],
   imports: [
     BrowserModule,
