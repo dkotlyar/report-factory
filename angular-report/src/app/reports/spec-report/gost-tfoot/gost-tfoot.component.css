@@ -2,7 +2,8 @@ table.gost2-104-06 {
     border-collapse: collapse;
     box-sizing: border-box;
     width: 185mm;
-    height: 55mm;
+    table-layout: fixed;
+    border-top: hidden;
 }
 
 table.gost2-104-06 tr {
@@ -10,4 +11,8 @@ table.gost2-104-06 tr {
 }
 table.gost2-104-06 td {
     border: var(--borderStyle);
+}
+
+td.text-center {
+    text-align: center;
 }

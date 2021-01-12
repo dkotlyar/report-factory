@@ -1,4 +1,4 @@
-<table class="gost2-104-06">
+<table class="gost2-104-06" *ngIf="numPage === 1 else secondPage">
     <colgroup>
         <col style="width: 7mm">
         <col style="width: 10mm">
@@ -9,9 +9,8 @@
         <col style="width: 5mm">
         <col style="width: 5mm">
         <col style="width: 5mm">
-        <col style="width: 5mm">
-        <col style="width: 12mm">
-        <col style="width: 18mm">
+        <col style="width: 15mm">
+        <col style="width: 20mm">
     </colgroup>
 
     <tr>
@@ -21,8 +20,8 @@
         <td></td>
         <td></td>
 
-        <td rowspan="3" colspan="7">
-            (2)
+        <td rowspan="3" colspan="6" class="text-center">
+            {{note}}
         </td>
     </tr>
 
@@ -35,42 +34,11 @@
     </tr>
 
     <tr>
-        <td>(14)</td>
-        <td>(15)</td>
-        <td>(16)</td>
-        <td>(17)</td>
-        <td>(18)</td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-
-        <td rowspan="5">
-            (1)
-        </td>
-
-        <td colspan="3">Лит.</td>
-        <td colspan="2">Масса</td>
-        <td>Масштаб</td>
-    </tr>
-
-    <tr>
-        <td>Изм.</td>
-        <td>Лист.</td>
-        <td>№ докум.</td>
-        <td>Подп.</td>
-        <td>Дата</td>
-
-        <td rowspan="3">(4)</td>
-        <td rowspan="3">(4)</td>
-        <td rowspan="3">(4)</td>
-
-        <td rowspan="3" colspan="2">(5)</td>
-        <td rowspan="3">(6)</td>
+        <td class="text-center">Изм.</td>
+        <td class="text-center">Лист.</td>
+        <td class="text-center">№ докум.</td>
+        <td class="text-center">Подп.</td>
+        <td class="text-center">Дата</td>
     </tr>
 
     <tr>
@@ -78,6 +46,14 @@
         <td></td>
         <td></td>
         <td></td>
+
+        <td rowspan="5"  class="text-center">
+            {{name}}
+        </td>
+
+        <td colspan="3" class="text-center">Лит.</td>
+        <td class="text-center">Лист</td>
+        <td class="text-center">Листов</td>
     </tr>
 
     <tr>
@@ -85,27 +61,22 @@
         <td></td>
         <td></td>
         <td></td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td class="text-center">{{numPage}}</td>
+        <td class="text-center">{{numPages}}</td>
     </tr>
 
     <tr>
-        <td colspan="2">Т.контр.</td>
+        <td colspan="2"></td>
         <td></td>
         <td></td>
         <td></td>
 
-        <td colspan="4">Лист (7)</td>
-        <td colspan="2">Листов (8)</td>
-    </tr>
-
-    <tr>
-        <td colspan="2">(10)</td>
-        <td>(11)</td>
-        <td>(12)</td>
-        <td>(13)</td>
-
-        <td rowspan="3">(3)</td>
-
-        <td rowspan="3" colspan="6">(9)</td>
+        <td colspan="5" rowspan="3"></td>
     </tr>
 
     <tr>
@@ -122,3 +93,46 @@
         <td></td>
     </tr>
 </table>
+
+<ng-template #secondPage>
+    <table class="gost2-104-06">
+        <colgroup>
+            <col style="width: 7mm">
+            <col style="width: 10mm">
+            <col style="width: 23mm">
+            <col style="width: 15mm">
+            <col style="width: 10mm">
+            <col style="width: 110mm">
+            <col style="width: 10mm">
+        </colgroup>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td rowspan="3" class="text-center">{{note}}</td>
+            <td class="text-center">Лист</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <td rowspan="2" class="text-center">{{numPage}}</td>
+        </tr>
+
+        <tr>
+            <td class="text-center">Изм.</td>
+            <td class="text-center">Лист.</td>
+            <td class="text-center">№ докум.</td>
+            <td class="text-center">Подп.</td>
+            <td class="text-center">Дата</td>
+        </tr>
+    </table>
+</ng-template>

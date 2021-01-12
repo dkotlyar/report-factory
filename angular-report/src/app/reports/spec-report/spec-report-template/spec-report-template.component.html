@@ -13,13 +13,13 @@
 
             <thead #header>
                 <tr style="text-align: center">
-                    <td>Формат</td>
-                    <td>Зона</td>
-                    <td>Поз.</td>
+                    <td><span class="vertical-bt-tp">Формат</span></td>
+                    <td><span class="vertical-bt-tp">Зона</span></td>
+                    <td><span class="vertical-bt-tp">Поз.</span></td>
                     <td>Обозначение</td>
                     <td>Наименование</td>
-                    <td>Кол.</td>
-                    <td>Примечание</td>
+                    <td><span class="vertical-bt-tp">Кол.</span></td>
+                    <td style="white-space: normal">Приме-чание</td>
                 </tr>
             </thead>
 
@@ -80,19 +80,25 @@
             </ng-container>
 
             <tbody>
-                <tr *ngFor="let empty of emptyLines()">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <ng-container *ngFor="let line of emptyLines">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
+        <div class="empty-space" *ngIf="emptySpace > 0" [style]="{height: emptySpace + 'px'}"></div>
         <div #footer>
-            <app-gost-tfoot></app-gost-tfoot>
+            <app-gost-tfoot [name]="page.content.NAME"
+                            [note]="page.content.NOTE"
+                            [numPage]="index + 1"
+                            [numPages]="pf.pages.length"></app-gost-tfoot>
         </div>
     </div>
 </div>
