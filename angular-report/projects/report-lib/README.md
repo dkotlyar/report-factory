@@ -8,14 +8,24 @@ This package automatically split your data in several pages.
 1. Создайте приложение angular: `ng new my-report`
 2. Установите библиотеку report-lib: `npm i report-lib`
 3. В файле src/styles.css добавьте импорт стиля:
-   ```
+   ```css
    @import '~report-lib/index.css';
    ```
    
 4. Создайте компоненту шаблона отчёта  `ng g component my-report-template`
 5. В созданной компоненте добавьте наследование от класса BaseReportComponent.
+   ```typescript
+   export class MyReportTemplateComponent
+    extends BaseReportTemplateComponent
+    implements OnInit {
+      constructor() {
+         super();
+      }
+      ngOnInit(): void { }
+   }
+   ```
 6. В шаблоне компоненты опишите основную структуру:
-    ```
+    ```angular2html
     <div repPageA4>
         <div #pagediv class="page-content">
             <!-- тут будет код шаблона -->
@@ -24,7 +34,7 @@ This package automatically split your data in several pages.
     ```
    
    Для ландшафтной ориентации использовать структуру:
-    ```
+    ```angular2html
     <div repPageA4="landscape">
         <div #pagediv class="page-content">
             <!-- тут будет код шаблона -->
@@ -37,7 +47,7 @@ This package automatically split your data in several pages.
 7. В качестве кода шаблона пропишите три основные компоненты, из которых состоит страница отчёта: #header, #footer, #content.
 Обязательным является только компонента #content, которая должна быть объявлена в цикле ngFor.
 Пример:
-    ```
+    ```angular2html
     <table>
         <tr #header>
             <td>№ п/п</td>
@@ -55,8 +65,37 @@ This package automatically split your data in several pages.
 8. Создайте компоненту отчёта `ng g component my-report`
 9. Загрузите в ней данные и создайте экземпляр класса PagesFactory.
 Выполните функцию splitPages().
+   ```typescript
+   pagesFactories: Array<PagesFactory>;
+   error;
+   
+   constructor(private dataService: DataService) { }
+   
+   ngOnInit(): void {
+   this.pagesFactories = [];
+   
+       this.dataService.getLocalReportData('my-report-id')
+         .then(data => {
+           const pf = new PagesFactory(data);
+           this.pagesFactories.push(pf);
+           pf.splitPages();
+         })
+         .catch(e => this.error = e);
+   }
+   ```
+   ```
+   data = [{...}, {...}, {...}, ..., {...}]
+   ```
 Проитерируйте страницы и на каждую страницу в шаблоне вызовите ваш созданный шаблон my-report-template.
 В качестве параметров задайте [page], [pf], [index]
+   ```angular2html
+   <ng-container *ngFor="let page of pagesFactory.pages; let i = index">
+      <my-report-template
+              [page]="page"
+              [pf]="pagesFactory"
+              [index]="i"></my-report-template>
+   </ng-container>
+   ```
 
 ## Описание методов и полей PagesFactory
 ### constructor(DATA, CONTENT)
@@ -118,3 +157,16 @@ This package automatically split your data in several pages.
 
 ### pageNum: number
 Содержит индекс страницы, на которой данный объект располагается.
+
+## Директивы
+
+### repPageA4
+
+Директива задаёт шаблон для построения отчётов на формате ISO А4. 
+Директива принимает параметр `portrait` для вертикальной ориентации и 
+`landscape` для горизонтальной ориентации.
+
+### repMultirow
+
+Директива устанавливается на HTML-элементы `tr` и позволяет разделять текст,
+который не умещается в ширину одной ячейки, на несколько строк.
