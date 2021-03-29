@@ -1,0 +1,259 @@
+<div repPageA4="landscape">
+  <div #pagediv class="page-content">
+    <table>
+      <colgroup>
+        <col style="width: 9mm">
+        <col style="width: 9mm">
+        <col style="width: 9mm">
+        <col style="width: 71mm">
+        <col style="width: 13mm">
+        <col style="width: 44mm">
+        <col style="width: 28mm">
+        <col style="width: 28mm">
+        <col style="width: 12mm">
+        <col style="width: 12mm">
+        <col style="width: 12mm">
+        <col style="width: 34mm">
+      </colgroup>
+
+      <thead #header style="font-weight: bold" class="center">
+      <tr>
+        <td colspan="12" style="padding: 0" class="noborder">
+          <table style="margin-bottom: 3mm">
+            <colgroup>
+              <col style="width: 190mm">
+              <col style="width: 40mm">
+              <col style="width: 24mm">
+              <col style="width: 27mm">
+            </colgroup>
+            <tr style="height: 6mm">
+              <td class="noborder fnt-12" style="text-align: center; text-transform: uppercase; font-weight: bold">Маршрутно-сопроводительная карта ДСЕ (МСКД)  №</td>
+              <td>{{page.items[0].content.NomerMSKD}}</td>
+              <td class="noborder"></td>
+              <td class="noborder fnt-7">Форма: 321-171_Ф1</td>
+            </tr>
+          </table>
+          <table>
+            <colgroup>
+              <col style="width: 46mm">
+              <col style="width: 28mm">
+              <col style="width: 56mm">
+              <col style="width: 124mm">
+              <col style="width: 18mm">
+              <col style="width: 9mm">
+            </colgroup>
+            <tr>
+              <td>Исполнение <strong>ПЗВ</strong></td>
+              <td></td>
+              <td>Обозначение ДСЕ</td>
+              <td></td>
+              <td class="fnt-7" colspan="2">Дата печати:</td>
+            </tr>
+            <tr>
+              <td>Версия ТП</td>
+              <td></td>
+              <td>Наименование ДСЕ</td>
+              <td></td>
+              <td class="fnt-8">Лист</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Дата утверждения ТП</td>
+              <td></td>
+              <td>Зав. № агрегата/№ заказа</td>
+              <td></td>
+              <td class="fnt-8">Листов</td>
+              <td></td>
+            </tr>
+          </table>
+
+          <table *ngIf="index == 0">
+            <colgroup>
+              <col style="width: 06mm">
+              <col style="width: 90mm">
+              <col style="width: 28mm">
+              <col style="width: 18mm">
+              <col style="width: 46mm">
+              <col style="width: 46mm">
+              <col style="width: 28mm">
+              <col style="width: 19mm">
+            </colgroup>
+            <tr>
+              <td colspan="8" style="text-align: center; text-transform: uppercase" class="noborder"><strong>Сведения о запуске в производство</strong></td>
+            </tr>
+            <tr>
+              <td rowspan="3"></td>
+              <td class="fnt-8 fnt-center">Наименование материала, марка, ГОСТ, сортамент</td>
+              <td class="fnt-8 fnt-center" colspan="2">Номер сертификата или протокола испытаний</td>
+              <td class="fnt-8 fnt-center">Номер партии, плавки</td>
+              <td class="fnt-8 fnt-center">Документ, допустивший замену</td>
+              <td class="fnt-8 fnt-center" colspan="2">Подпись или фамилия выдавшего метариал</td>
+            </tr>
+            <tr style="height: 12mm">
+              <td></td>
+              <td colspan="2"></td>
+              <td></td>
+              <td></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td colspan="2">Количество деталей на запуск</td>
+              <td></td>
+              <td colspan="3">Количество деталей в заготовке</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td rowspan="2">СЕ</td>
+              <td class="fnt-center" colspan="3">Номера МСКД входящих деталей особой ответственности</td>
+              <td class="fnt-center" colspan="4">Марка, ГОСТ, ТУ соединительного материала</td>
+            </tr>
+            <tr style="height: 12mm">
+              <td colspan="3"></td>
+              <td colspan="4"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="noborder" *ngIf="index == 0">
+        <td colspan="12"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4"><strong>Тех.процесс</strong></td>
+        <td rowspan="2" class="fnt-7">Кол-во ДСЕ</td>
+        <td colspan="3"><strong>Исполнитель</strong></td>
+        <td rowspan="2" class="fnt-7">Годных ДСЕ</td>
+        <td rowspan="2" class="fnt-7" style="word-break: break-all">Неиспр.дефект</td>
+        <td rowspan="2" class="fnt-7">Клеймо</td>
+        <td rowspan="2">Примечание</td>
+      </tr>
+      <tr>
+        <td class="fnt-8">Цех</td>
+        <td class="fnt-8">Уч</td>
+        <td class="fnt-8">Опер</td>
+        <td>Наименование операции</td>
+        <td>Фамилия</td>
+        <td>Подпись</td>
+        <td>Дата</td>
+      </tr>
+      </thead>
+
+      <ng-container *ngFor="let item of page.items; let index = index">
+        <tr #content>
+          <td>{{item.content.CEHA_NUMBER}}</td>
+          <td>{{item.content.CEHA_SECTOR}}</td>
+          <td>{{item.content.TECHPAR_VALUE}}</td>
+          <td>{{item.content.NMK_NAME}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </ng-container>
+
+      <tfoot #footer>
+      <tr class="noborder">
+        <td colspan="12"></td>
+      </tr>
+      <tr>
+        <td colspan="12" style="padding: 0" class="noborder">
+          <table>
+            <colgroup>
+              <col style="width: 9mm">
+              <col style="width: 43mm">
+              <col style="width: 43mm">
+              <col style="width: 45mm">
+              <col style="width: 10mm">
+              <col style="width: 43mm">
+              <col style="width: 43mm">
+              <col style="width: 45mm">
+            </colgroup>
+
+            <ng-container *ngIf="index == pf.numPages - 1">
+              <tr>
+                <td class="noborder"></td>
+                <td colspan="3" class="noborder">Изменения (СЗ ОКБ, ИИ, ТИИ, ТР, ЖИ, ЖО, РО, акты, ордера, протоколы):</td>
+                <td colspan="4" class="noborder"></td>
+              </tr>
+              <tr>
+                <td>1.</td>
+                <td colspan="3"></td>
+                <td>10.</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td>1.</td>
+                <td colspan="3"></td>
+                <td>10.</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td>1.</td>
+                <td colspan="3"></td>
+                <td>10.</td>
+                <td colspan="3"></td>
+              </tr>
+
+              <tr class="noborder">
+                <td colspan="8" style="text-align: center; height: 12mm">
+                  Мастер: ФИО _________________________________________________
+                  подпись ________________
+                  дата "____" _________________ 20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; г.
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="4" style="text-align: center"><strong>Б</strong></td>
+                <td class="fnt-8">Номера МСКД на отделившиеся части и дата разделения партии</td>
+                <td class="fnt-8">Номер МСКД исходной партии и дата разделения</td>
+                <td class="fnt-8">Штамп, подпись работника ОТК</td>
+                <td rowspan="4" style="text-align: center"><strong>В</strong></td>
+                <td>Номер цеха</td>
+                <td class="fnt-8">Фамилия, подпись работника ПРБ / мастера</td>
+                <td class="fnt-8">Штамп, подпись работника ОТК</td>
+              </tr>
+              <tr style="height: 10mm">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr style="height: 10mm">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr style="height: 10mm">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr style="height: 10mm;">
+                <td colspan="8"></td>
+              </tr>
+            </ng-container>
+
+            <tr>
+              <td colspan="4"></td>
+              <td colspan="4">{{ page.items[0].content.NMK_NAME }} {{ page.items[0].content.NMK_NOTE }}</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
