@@ -44,9 +44,11 @@ This package automatically split your data in several pages.
             <td>Содержимое</td>
         </tr>
         <ng-container *ngFor="let content of page.items; let npp = index">
+          <tr #content>
             <td>{{npp}}</td>
             <td>{{content}}</td>
-        </tr>
+          </tr>
+        </ng-container>
     </table>
     ```
 
