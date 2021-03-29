@@ -66,21 +66,18 @@ This package automatically split your data in several pages.
 9. Загрузите в ней данные и создайте экземпляр класса PagesFactory.
 Выполните функцию splitPages().
    ```typescript
-   pagesFactories: Array<PagesFactory>;
+   pagesFactory: PagesFactory;
    error;
    
    constructor(private dataService: DataService) { }
    
    ngOnInit(): void {
-   this.pagesFactories = [];
-   
-       this.dataService.getLocalReportData('my-report-id')
-         .then(data => {
-           const pf = new PagesFactory(data);
-           this.pagesFactories.push(pf);
-           pf.splitPages();
-         })
-         .catch(e => this.error = e);
+    this.dataService.getLocalReportData('my-report-id')
+      .then(data => {
+        this.pagesFactory = new PagesFactory(data);
+        this.pagesFactory.splitPages();
+      })
+      .catch(e => this.error = e);
    }
    ```
    ```
@@ -95,6 +92,15 @@ This package automatically split your data in several pages.
               [pf]="pagesFactory"
               [index]="i"></my-report-template>
    </ng-container>
+
+   <rep-error-page
+           *ngIf="error!==undefined"
+           [error]="error"
+   ></rep-error-page>
+
+   <div class="overlay no-print" *ngIf="!this.pagesFactory.complited">
+      Идет построение отчёта
+   </div>
    ```
 
 ## Описание методов и полей PagesFactory
