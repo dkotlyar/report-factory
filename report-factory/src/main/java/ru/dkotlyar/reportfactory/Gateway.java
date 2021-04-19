@@ -78,6 +78,10 @@ public class Gateway {
         statusReportResponse.setUuid(reportObject.getUuid());
         statusReportResponse.setStatus(reportObject.getState().toString());
 
+        statusReportResponse.setDuration((int)(reportObject.getGeneratingTime() / 1000));
+        statusReportResponse.setStart(reportObject.getStartGenerating());
+        statusReportResponse.setEnd(reportObject.getEndGenerating());
+
         if (reportObject.getState() == ReportState.Done) {
             statusReportResponse.setFilename(reportObject.getFileName());
             statusReportResponse.setUrl(fileurl + reportObject.getFileName());
