@@ -17,6 +17,8 @@ import { GostTfootComponent } from './reports/spec-report/gost-tfoot/gost-tfoot.
 import { SpecTestComponent } from './reports/spec-report/spec-test/spec-test.component';
 import {MskdReportComponent} from './reports/mskd-report/mskd-report/mskd-report.component';
 import {MskdReportTemplateComponent} from './reports/mskd-report/mskd-report-template/mskd-report-template.component';
+import { MskdReportLargeComponent } from './reports/mskd-report/mskd-report-large/mskd-report-large.component';
+import { MskdTestComponent } from './reports/mskd-report/mskd-test/mskd-test.component';
 
 const appRoutes: Routes = [
   {path: '', component: ReadmeComponent},
@@ -25,7 +27,9 @@ const appRoutes: Routes = [
   {path: 'spec/:id', component: SpecReportComponent},
   {path: 'msks', component: MsksTestComponent},
   {path: 'msks/:id', component: MsksReportComponent},
-  {path: 'mskd', component: MskdReportComponent},
+  {path: 'mskd', component: MskdTestComponent},
+  {path: 'mskd/:id', component: MskdReportComponent},
+  {path: 'mskd-large/:id', component: MskdReportLargeComponent},
 ];
 
 @NgModule({
@@ -42,7 +46,9 @@ const appRoutes: Routes = [
     GostTfootComponent,
     SpecTestComponent,
       MskdReportComponent,
-      MskdReportTemplateComponent
+      MskdReportTemplateComponent,
+      MskdReportLargeComponent,
+      MskdTestComponent
   ],
   imports: [
     BrowserModule,
