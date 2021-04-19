@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PagesFactory} from 'report-lib';
 import {DataService} from '../../../services/data.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-mskd-report',
@@ -12,12 +13,14 @@ export class MskdReportComponent implements OnInit {
   pagesFactories: Array<PagesFactory>;
   error;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const id = this.activatedRoute.snapshot.params.id;
     this.pagesFactories = [];
 
-    this.dataService.getLocalReportData('mskd-test')
+    this.dataService.getReportData(id)
       .then(data => {
         const pf = new PagesFactory(data);
         this.pagesFactories.push(pf);
