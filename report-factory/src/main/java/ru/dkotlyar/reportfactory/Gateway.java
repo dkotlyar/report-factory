@@ -104,6 +104,7 @@ public class Gateway {
 
     @GET
     @Path("/files/{id}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     @Transactional
     public Response getFile(@PathParam("id") String id) {
         ReportObject reportObject = reportStore.get(id);
