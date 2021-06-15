@@ -106,7 +106,6 @@ public class Gateway {
     @Path("/files/{id}")
     @Transactional
     public Response getFile(@PathParam("id") String id) {
-        System.out.println(id);
         ReportObject reportObject = reportStore.get(id);
 
         if (reportObject == null) {
@@ -116,11 +115,17 @@ public class Gateway {
         }
 
         try {
-            java.nio.file.Path path = Paths.get(new File(reportPath).getAbsolutePath(), reportObject.getFileName());
-            return Response
-                    .ok(new FileInputStream(path.toFile()), MediaType.APPLICATION_OCTET_STREAM)
-                    .header("Content-Disposition", "attachment; filename=\"" + path.getFileName() + "\"")
-                    .build();
+            File file = Paths.get(new File(reportPath).getAbsolutePath(), reportObject.getFileName()).toFile();
+            if (file.exists()) {
+                return Response
+                        .ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM)
+                        .header("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"")
+                        .build();
+            } else {
+                return Response
+                        .status(404)
+                        .build();
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return Response
