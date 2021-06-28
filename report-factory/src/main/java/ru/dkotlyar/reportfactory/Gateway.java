@@ -11,6 +11,11 @@ import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.nio.file.Paths;
 
 @Path("/report")
 public class Gateway {
@@ -20,6 +25,8 @@ public class Gateway {
 
     @ConfigProperty(name="report.fileurl")
     String fileurl;
+    @ConfigProperty(name = "report.path")
+    String reportPath;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -93,5 +100,38 @@ public class Gateway {
         return Response
                 .ok(statusReportResponse)
                 .build();
+    }
+
+    @GET
+    @Path("/files/{id}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Transactional
+    public Response getFile(@PathParam("id") String id) {
+        ReportObject reportObject = reportStore.get(id);
+
+        if (reportObject == null) {
+            return Response
+                    .status(404)
+                    .build();
+        }
+
+        try {
+            File file = Paths.get(new File(reportPath).getAbsolutePath(), reportObject.getFileName()).toFile();
+            if (file.exists()) {
+                return Response
+                        .ok(new FileInputStream(file), MediaType.APPLICATION_OCTET_STREAM)
+                        .header("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"")
+                        .build();
+            } else {
+                return Response
+                        .status(404)
+                        .build();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return Response
+                    .status(500)
+                    .build();
+        }
     }
 }
