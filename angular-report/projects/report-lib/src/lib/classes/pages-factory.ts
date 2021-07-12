@@ -1,10 +1,15 @@
 import {Page} from './pojo/page';
 import {PageItem} from './pojo/page-item';
 import {ComputedStyles} from './computed-styles';
+import {EventEmitter} from '@angular/core';
 
 export class PagesFactory {
+  get __VERSION__(): string {
+    return '0.0.8';
+  }
+
   private pagesArr: Array<Page> = [];
-  private complitedFlag = false;
+  private completedFlag = false;
   private styles: ComputedStyles;
 
   // Текущее количество итераций построения отчёта
@@ -12,6 +17,8 @@ export class PagesFactory {
 
   // Задает максимальное количество итераций построения отчёта.
   public maximumSplitIterations = 5;
+
+  completedEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   // В качестве объекта DATA задайте произвольный массив. Данный массив в последующем будет делиться на страницы.
   // Данные массива DATA будут записаны в поле items объекта Page.
@@ -48,8 +55,8 @@ export class PagesFactory {
   }
 
   // Возвращает true когда построение отчёта завершено, в противном случае false. Read-only.
-  get complited(): boolean {
-    return this.complitedFlag;
+  get completed(): boolean {
+    return this.completedFlag;
   }
 
   // Вызывает цепочку функций для разделения исходного массива DATA на страницы.
@@ -62,7 +69,7 @@ export class PagesFactory {
   // Сбрасывает счётчик итераций построения отчёта и повторно вызывает метод splitPages() для имеющихся данных.
   public reset(): void {
     this.splitIteration = 0;
-    this.complitedFlag = false;
+    this.completedFlag = false;
     this.splitPage(0, true);
   }
 
@@ -228,7 +235,8 @@ export class PagesFactory {
           page.freeHeight = this.calculateFreeHeight(page, pageNum) + page.minimumFreeHeight;
       });
 
-      this.complitedFlag = true;
+      this.completedFlag = true;
+      this.completedEvent.emit(true);
     });
   }
 

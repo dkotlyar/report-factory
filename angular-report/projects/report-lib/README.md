@@ -110,6 +110,11 @@ This package automatically split your data in several pages.
 Данные массива DATA будут записаны в поле items объекта Page.
 Также необязательно можно передать объект CONTENT. Данный объект будет записан в поле content объекта Page.
 
+### \_\_VERSION\_\_: string
+**Read-only.**
+
+Возвращает текущую версию библиотеки.
+
 ### pages: Array\<Page>
 **Read-only.**
 
@@ -125,10 +130,16 @@ This package automatically split your data in several pages.
 
 Поле items возвращает массив DATA обернутый в объект PageItem.
 
-### complited: boolean
+### completed: boolean
 **Read-only.**
 
 Возвращает true когда построение отчёта завершено, в противном случае false.
+
+### completedEvent: EventEmitter\<boolean>
+**Read-only.**
+
+Возвращает объект-событие, на который можно подписаться командой .subscribe(). 
+Событие вызывается, когда разбиение на страницы завершено (флаг `completed = true`).
 
 ### maximumSplitIterations: number
 **Read-Write.**
