@@ -1,4 +1,4 @@
-<div [repPageA4]="(index % 2) ? 'landscape' : 'portrait'">
+<div [repPageA4]>
   <div #pagediv class="page-content">
     <table>
       <colgroup>
@@ -14,7 +14,7 @@
         <col style="width: 12mm">
       </colgroup>
 
-      <thead #header style="font-weight: bold" class="center">
+      <thead style="font-weight: bold" class="center">
 
         <tr>
           <td colspan="10" style="padding: 0" class="noborder">
@@ -181,7 +181,7 @@
         </tbody>
       </ng-container>
 
-      <tfoot #footer>
+      <tfoot>
         <tr class="noborder">
           <td colspan="10"></td>
         </tr>

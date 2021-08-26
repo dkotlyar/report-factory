@@ -13,7 +13,7 @@ export class MsksReportTemplateComponent
   constructor() { super(); }
 
   ngOnInit(): void {
-    this.page.minimumFreeHeight = 20;
+    this.page.minimumFreeHeight = 40;
   }
 
   startEtapa(item: PageItem): boolean {

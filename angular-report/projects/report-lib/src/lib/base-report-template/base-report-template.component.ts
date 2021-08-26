@@ -17,14 +17,6 @@ export class BaseReportTemplateComponent implements OnInit {
   set pagediv(page: ElementRef) {
     this.page.page = page;
   }
-  @ViewChild('header')
-  set header(header: ElementRef) {
-    this.page.header = header;
-  }
-  @ViewChild('footer')
-  set footer(footer: ElementRef) {
-    this.page.footer = footer;
-  }
   @ViewChildren('content')
   set content(components: QueryList<ElementRef>) {
     this.page.components = components;
