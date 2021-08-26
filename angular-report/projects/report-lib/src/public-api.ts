@@ -12,5 +12,6 @@ export * from './lib/report-lib.component';
 
 export * from './lib/directives/page-a4.directive';
 export * from './lib/directives/multirow.directive';
+export * from './lib/directives/vertical-cell.directive';
 
 export * from './lib/report-lib.module';

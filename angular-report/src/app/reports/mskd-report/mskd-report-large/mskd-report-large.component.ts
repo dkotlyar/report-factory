@@ -54,7 +54,7 @@ export class MskdReportLargeComponent implements OnInit {
 
   get complited(): boolean {
     return this.pagesFactories
-        .map(p => p.complited)
+        .map(p => p.completed)
         .reduce((a, b) => a && b, true);
   }
 }
