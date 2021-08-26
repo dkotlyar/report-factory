@@ -4,6 +4,7 @@ import {BaseReportTemplateComponent} from './base-report-template/base-report-te
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { PageA4Directive } from './directives/page-a4.directive';
 import { MultirowDirective } from './directives/multirow.directive';
+import {VerticalCellDirective} from './directives/vertical-cell.directive';
 
 
 
@@ -13,7 +14,8 @@ import { MultirowDirective } from './directives/multirow.directive';
     BaseReportTemplateComponent,
     ErrorPageComponent,
     PageA4Directive,
-    MultirowDirective
+    MultirowDirective,
+    VerticalCellDirective
   ],
   imports: [
   ],
@@ -22,7 +24,8 @@ import { MultirowDirective } from './directives/multirow.directive';
     BaseReportTemplateComponent,
     ErrorPageComponent,
     PageA4Directive,
-    MultirowDirective
+    MultirowDirective,
+    VerticalCellDirective
   ]
 })
 export class ReportLibModule { }

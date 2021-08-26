@@ -34,7 +34,7 @@ export class SpecReportComponent implements OnInit {
     }
 
     get complited(): boolean {
-        return this.pagesFactory.complited;
+        return this.pagesFactory.completed;
     }
 
 }

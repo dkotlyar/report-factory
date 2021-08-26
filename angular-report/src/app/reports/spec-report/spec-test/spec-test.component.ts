@@ -30,7 +30,7 @@ export class SpecTestComponent implements OnInit {
     }
 
     get complited(): boolean {
-        return this.pagesFactory.complited;
+        return this.pagesFactory.completed;
     }
 
 }
