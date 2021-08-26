@@ -13,17 +13,32 @@ export class Page {
   freeHeight: number;
 
   // Поле определяет доступную высоту страницы для генерирования отчёта. Вычисляется автоматически для элемента page
-  contentHeight: number;
+  // contentHeight: number;
   // Поле содержит высоту элементов header, footer, а также требуемое свободное место на странице
-  headerAndFooterHeight: number;
+  // headerAndFooterHeight: number;
   // Требуемое свободное место на странице. Задается в пикселях.
   // Read-Write.
   minimumFreeHeight = 0;
 
   page: ElementRef;
-  header: ElementRef;
-  footer: ElementRef;
   components: QueryList<ElementRef>;
 
   componentsUpdated: EventEmitter<null> = new EventEmitter<null>();
+
+  // Функция вычисляет доступную высоту страницы для генерирования отчёта.
+  contentHeight(): number {
+    return this.page.nativeElement.getClientRects()[0].height;
+  }
+
+  // Функция вычисляет высоту элементов header, footer, а также требуемое свободное место на странице
+  headerAndFooterHeight(): number[] {
+    const pagediv = this.page.nativeElement;
+    const first = this.components.first.nativeElement;
+    const last = this.components.last.nativeElement;
+    const firstRect = first.getClientRects()[0];
+    const lastRect = last.getClientRects()[0];
+    const headerHeight = firstRect.top - pagediv.getClientRects()[0].top;
+    const footerHeight = pagediv.lastChild.getClientRects()[0].bottom - (lastRect.bottom);
+    return [headerHeight, footerHeight, (this.minimumFreeHeight || 0)];
+  }
 }

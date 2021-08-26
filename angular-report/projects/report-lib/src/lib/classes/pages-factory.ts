@@ -5,7 +5,7 @@ import {EventEmitter} from '@angular/core';
 
 export class PagesFactory {
   get __VERSION__(): string {
-    return '0.0.8';
+    return '0.0.11';
   }
 
   private pagesArr: Array<Page> = [];
@@ -73,22 +73,6 @@ export class PagesFactory {
     this.splitPage(0, true);
   }
 
-  private getHeaderAndFooterHeights(page: Page): Array<number> {
-    const heights = [0, 0, 0];
-
-    if (page.header !== undefined) {
-      heights[0] = this.styles.getOuterHeight(page.header.nativeElement) || 0;
-    }
-
-    if (page.footer !== undefined) {
-      heights[1] = this.styles.getOuterHeight(page.footer.nativeElement) || 0;
-    }
-
-    heights[2] = page.minimumFreeHeight || 0;
-
-    return heights;
-  }
-
   private splitPage(pageNumber: number, force = false): void {
     const page = this.pages[pageNumber];
 
@@ -109,13 +93,11 @@ export class PagesFactory {
       this.splitIteration++;
     }
 
-    let summarySize = this.getHeaderAndFooterHeights(page).reduce((a, b) => a + b);
+    let summarySize = page.headerAndFooterHeight().reduce((a, b) => a + b);
     let splitNumber = -1;
     let normalized = true;
-    let freeHeight = 0;
-    const pageHeight = this.getPageHeight(page);
-    page.contentHeight = pageHeight;
-    page.headerAndFooterHeight = summarySize;
+
+    const pageHeight = page.contentHeight();
 
     page.components.map((item, index, items) => {
       let itemHeight = this.styles.getOuterHeight(item.nativeElement);
@@ -128,7 +110,6 @@ export class PagesFactory {
 
       if ((summarySize + itemHeight) < pageHeight) {
         splitNumber = index;
-        freeHeight = pageHeight - (summarySize + itemHeight);
       } else {
         normalized = false;
       }
@@ -169,7 +150,7 @@ export class PagesFactory {
     }
     else {
       if (this.splitIteration > this.maximumSplitIterations) {
-        this.complite();
+        this.complete();
       } else {
         this.mergePages();
       }
@@ -224,12 +205,12 @@ export class PagesFactory {
       if (shuffleItems > 0) {
         this.splitPage(0);
       } else {
-        this.complite();
+        this.complete();
       }
     });
   }
 
-  private complite(): void {
+  private complete(): void {
     setTimeout(() => {
       this.pages.forEach((page, pageNum) => {
           page.freeHeight = this.calculateFreeHeight(page, pageNum) + page.minimumFreeHeight;
@@ -241,16 +222,12 @@ export class PagesFactory {
   }
 
   private calculateFreeHeight(page: Page, pageNum: number): number {
-    let summarySize = this.getHeaderAndFooterHeights(page).reduce((a, b) => a + b);
+    let summarySize = page.headerAndFooterHeight().reduce((a, b) => a + b);
 
     this.items.filter(item => item.pageNum === pageNum).forEach((item, index) => {
       summarySize += item.height;
     });
 
-    return this.getPageHeight(page) - summarySize;
-  }
-
-  private getPageHeight(page: Page): number {
-    return this.styles.getInnerHeight(page.page.nativeElement);
+    return page.contentHeight() - summarySize;
   }
 }
