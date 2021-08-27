@@ -1,5 +1,5 @@
 div.gost2-106-96 {
-    --borderStyle: 0.75mm solid black;
+    --borderStyle: 0.5mm solid black;
 
     font-family: 'Arial', 'Roboto', sans-serif;
     font-size: 3.5mm;
@@ -9,7 +9,7 @@ div.gost2-106-96 {
 div.gost2-106-96 .page {
     padding-top: 5mm;
     padding-bottom: 5mm;
-    padding-left: 20mm;
+    padding-left: 8mm;
     padding-right: 5mm;
 }
 div.gost2-106-96 .page-content {
@@ -49,4 +49,19 @@ table.gost2-106-96 td {
     border: var(--borderStyle);
     box-sizing: border-box;
     border-top: hidden;
+}
+
+.gost2-106-96-side-cells {
+    width: 12mm;
+    height: 287mm;
+    margin-right: -0.5mm;
+}
+.gost2-106-96-side-cells table {
+    transform: rotate(-90deg) translate(-100%, 0);
+    transform-origin: top left;
+    text-align: center;
+}
+
+.gost2-106-96-side-cells table tr:last-child td {
+    border-bottom: none;
 }

@@ -8,6 +8,7 @@ import {BaseReportTemplateComponent, PageItem} from 'report-lib';
 })
 export class SpecReportTemplateComponent extends BaseReportTemplateComponent implements OnInit {
 
+  completed: boolean;
   private rowHeight;
 
   constructor() { super(); }
@@ -16,13 +17,20 @@ export class SpecReportTemplateComponent extends BaseReportTemplateComponent imp
     this.page.minimumFreeHeight = 20;
 
     setTimeout(() => {
-      this.page.components.first.nativeElement.childNodes.forEach(child => {
-        const tagName = (child as HTMLElement).tagName;
-        if (tagName !== undefined && tagName.toLowerCase() === 'tr' && this.rowHeight === undefined) {
-          this.rowHeight = (child as HTMLElement).offsetHeight;
-        }
-      });
+      if (this.page.components.length > 0) {
+        this.page.components.first.nativeElement.childNodes.forEach(child => {
+          const tagName = (child as HTMLElement).tagName;
+          if (tagName !== undefined && tagName.toLowerCase() === 'tr' && this.rowHeight === undefined) {
+            this.rowHeight = (child as HTMLElement).offsetHeight;
+          }
+        });
+      }
     }, 100);
+
+    this.pf.completedEvent.subscribe(() => {
+      this.completed = true;
+      console.log(this.page);
+    });
   }
 
   startGroup(item: PageItem, index: number): boolean {
@@ -36,7 +44,7 @@ export class SpecReportTemplateComponent extends BaseReportTemplateComponent imp
       lastItem = this.page.items[index - 1];
     }
 
-    return lastItem === undefined || lastItem.content.CLASSIF !== item.content.CLASSIF;
+    return lastItem === undefined || lastItem.content.title !== item.content.title;
   }
 
   get emptyLines(): Array<number> {
@@ -48,15 +56,17 @@ export class SpecReportTemplateComponent extends BaseReportTemplateComponent imp
       return [];
     } else {
       let arrLen = Math.floor(this.page.freeHeight / this.rowHeight);
-      arrLen = Math.max(0, arrLen - 1);
+      arrLen = Math.max(0, arrLen);
       return new Array(arrLen).fill(this.rowHeight);
     }
   }
 
-  get emptySpace(): number {
+  get emptySpace(): string {
     if (this.page.freeHeight === undefined) {
-      return 0;
+      return '0px';
     }
-    return this.page.freeHeight - this.emptyLines.reduce((a, b) => a + b, 0);
+    console.log(this.page.freeHeight, this.emptyLines.length);
+    return this.page.freeHeight - this.emptyLines.reduce((a, b) => a + b, 0) + 'px';
+    // return 287 - this.emptyLines.length + 'mm';
   }
 }

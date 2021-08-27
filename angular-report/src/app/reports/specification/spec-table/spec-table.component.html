@@ -1,0 +1,260 @@
+<div repPageA4>
+  <table style="table-layout: fixed;">
+    <colgroup>
+      <col style="width: 5mm">
+      <col style="width: 7mm">
+
+      <col style="width: 6mm">
+      <col style="width: 2mm">
+      <col style="width: 4mm">
+
+      <col style="width: 5mm">
+      <col style="width: 3mm">
+
+      <col style="width: 20mm">
+      <col style="width: 17mm">
+      <col style="width: 10mm">
+      <col style="width: 26mm">
+
+      <col style="width: 40mm">
+      <col style="width: 10mm">
+      <col style="width: 7mm">
+
+      <col style="width: 2mm">
+      <col style="width: 8mm">
+
+      <col style="width: 2mm">
+      <col style="width: 8mm">
+
+      <col style="width: 14mm">
+    </colgroup>
+
+    <tr #header>
+      <td repVerticalCell rowspan="8"  class="table-row-2" style="text-align: center">
+        Перв. примен.
+      </td>
+      <td rowspan="8" class="table-row-2" style="font-size: 10pt; height: 32mm; border-right: none ">
+      </td>
+
+      <!--      <tr #header >-->
+      <td repVerticalCell class="table-row-2 "  style="text-align: center;">
+        Формат
+      </td>
+      <td repVerticalCell colspan="2"  class="table-row-2" style="text-align: center">
+        Зона
+      </td>
+      <td repVerticalCell colspan="2" class="table-row-2" style="text-align: center">
+        Поз.
+      </td>
+      <td colspan="4" class="table-row-2" style="text-align: center">
+        Обозначение
+      </td>
+      <td colspan="3" class="table-row-2" style="text-align: center">
+        Наименование
+      </td>
+      <td repVerticalCell colspan="3" class="table-row-2 " style="text-align: center">
+        Кол.
+      </td>
+      <td colspan="2" class="table-row-2 title-table" style="text-align: center; ">
+        Примечание
+      </td>
+    </tr>
+
+    <ng-container *ngFor="let item of page.items; let npp =index">
+      <tr #content repMultirow>
+        <td repVerticalCell *ngIf="npp == 7" rowspan="6" class="table-row-2" style="text-align: center">
+          Справ. №
+        </td>
+        <td *ngIf="npp == 7" rowspan="6" class="table-row-2" style="font-size: 10pt; border-right: none ">
+        </td>
+
+        <td rowspan="2" *ngIf="npp == 13"  style="font-size: 10pt; "></td>
+        <td rowspan="2" *ngIf="npp == 13"  style="font-size: 10pt; "></td>
+
+        <td repVerticalCell rowspan="6" *ngIf="npp == 15" class="table-row-2" style="text-align: center">
+          Подп. и дата
+        </td>
+        <td rowspan="6" *ngIf="npp == 15" class="table-row-2" style="font-size: 10pt;border-right: none ">
+        </td>
+
+        <td repVerticalCell rowspan="5" *ngIf="npp == 21"  class="table-row-2" style="text-align: center">
+          Инв.№ дубл.
+        </td>
+        <td rowspan="5" *ngIf="npp == 21"  class="table-row-2" style="font-size: 10pt;  border-right: none ">
+
+        <td repVerticalCell rowspan="4" *ngIf="npp == 26"  class="table-row-2" style="text-align: center">
+          Взам.инв.№
+        </td>
+        <td rowspan="4" *ngIf="npp == 26" class="table-row-2" style="font-size: 10pt; border-right: none ">
+        </td>
+
+        <td repVerticalCell rowspan="4" *ngIf="npp == 30"  class="table-row-2" style="text-align: center">
+          Подп. и дата
+        </td>
+        <td rowspan="4" *ngIf="npp == 30"  class="table-row-2" style="font-size: 10pt; border-right: none ">
+        </td>
+
+        <td class="table-row-2" style="text-align: center;">
+          {{item.content.format}}
+        </td>
+        <td colspan="2" class="table-row-2" style="text-align: center">
+          {{item.content.zona}}
+        </td>
+        <td colspan="2" class="table-row-2" style="text-align: center">
+          {{item.content.pozition}}
+        </td>
+        <td colspan="4" class="table-row-2" style="text-align: center">
+          {{item.content.note}}
+        </td>
+        <td colspan="3" *ngIf="item.content.type !== 'title'" class="table-row-2">
+          {{item.content.name}}
+        </td>
+        <td colspan="3" *ngIf="item.content.type == 'title'" class="table-row-2" style="text-align: center; text-decoration: underline;">
+          {{item.content.name}}
+        </td>
+        <td colspan="3" class="table-row-2" style="text-align: center;">
+          {{item.content.qnt}}
+        </td>
+        <td colspan="2" class="table-row-2" style="text-align: center;  height: 19pt">
+          {{item.content.comment}}
+        </td>
+      </tr>
+    </ng-container>
+
+    <tfoot #footer>
+    <tr>
+      <td repVerticalCell rowspan="7" class="table-row-2" style="text-align: center">
+        Инв.№ подл
+      </td>
+      <td rowspan="7" class="table-row-2" style="font-size: 10pt;  border-right: none ">
+      </td>
+
+      <td colspan="2" class="table-row-2" style="text-align: center; height: 11pt">
+      </td>
+      <td colspan="2" class="table-row-2" style="text-align: center">
+      </td>
+      <td colspan="2" class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td rowspan="3" colspan="9" class="table-row-2" style="text-align: center">
+        {{title.note}}
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="table-row-2" style="text-align: center; height: 11pt">
+      </td>
+      <td colspan="2"  class="table-row-2" style="text-align: center">
+        Зам.
+      </td>
+      <td colspan="2" class="table-row-2" style="text-align: center">
+        {{title.numDoc}}
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="table-row-2" style="text-align: center; height: 11pt">
+        Изм.
+      </td>
+      <td colspan="2"  class="table-row-2" style="text-align: center">
+        Лист
+      </td>
+      <td colspan="2" class="table-row-2" style="text-align: center">
+        № докум
+      </td>
+      <td class="table-row-2" style="text-align: center">
+        Подп.
+      </td>
+      <td class="table-row-2" style="text-align: center">
+        Дата
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="4" class="table-row-2" style="text-align: center; height: 11pt">
+        Разраб.
+      </td>
+      <td colspan="2"  class="table-row-2" style="text-align: center">
+        {{title.razrab}}
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td colspan="2" rowspan="4" class="table-row-2" style="text-align: center">
+        {{title.name}}
+      </td>
+      <td colspan="4" class="table-row-2 text-foot">
+        Лит
+      </td>
+
+      <td colspan="2" class="table-row-2 text-foot" >
+        Лист
+      </td>
+      <td  class="table-row-2 text-foot" >
+        Листов
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="4" class="table-row-2" style="text-align: center; height: 11pt">
+        Пров.
+      </td>
+      <td colspan="2"  class="table-row-2" style="text-align: center">
+        {{title.proveril}}
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td colspan="2" class="table-row-2" style="text-align: center">
+      </td>
+      <td  class="table-row-2" style="text-align: center">
+      </td>
+      <td  colspan="2" class="table-row-2 text-foot">
+        {{index + 1}}
+      </td>
+      <td class="table-row-2 text-foot" >
+        {{pf.numPages}}
+      </td>
+    </tr>
+
+    <tr >
+      <td colspan="4" class="table-row-2" style="text-align: center; height: 11pt">
+        Нач.КБ.
+      </td>
+      <td colspan="2"  class="table-row-2" style="text-align: center">
+        {{title.nachTB}}
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td colspan="7" rowspan="2" class="table-row-2" style="text-align: center;font-size: 12pt; font-weight: bold">
+        АО "ОДК-ГТ"
+      </td>
+    </tr>
+    <tr >
+      <td colspan="4" class="table-row-2" style="text-align: center; height: 11pt">
+        Утвердил
+      </td>
+      <td colspan="2"  class="table-row-2" style="text-align: center">
+        {{title.utverdil}}
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+      <td class="table-row-2" style="text-align: center">
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>

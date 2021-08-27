@@ -5,7 +5,7 @@ import {EventEmitter} from '@angular/core';
 
 export class PagesFactory {
   get __VERSION__(): string {
-    return '0.0.11';
+    return '0.0.13';
   }
 
   private pagesArr: Array<Page> = [];
@@ -75,6 +75,10 @@ export class PagesFactory {
 
   private splitPage(pageNumber: number, force = false): void {
     const page = this.pages[pageNumber];
+    if (page.items.length === 0) {
+      this.mergePages();
+      return;
+    }
 
     if (!force) {
       const subscription = page.componentsUpdated.subscribe(() => {

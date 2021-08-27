@@ -37,4 +37,12 @@ export class DataService {
         map(val => val.data)
       ).toPromise();
   }
+
+    getLocalReportJson(id: string): Promise<any> {
+        // @ts-ignore
+        return this.http.get('assets/data/' + id)
+            .pipe(
+                map(val => val)
+            ).toPromise();
+    }
 }

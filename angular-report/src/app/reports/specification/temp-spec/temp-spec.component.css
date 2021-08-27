@@ -1,0 +1,39 @@
+.table-row{
+  border: 1px black solid;
+}
+.page-content {
+  padding: 5mm;
+}
+.text-foot{
+  text-align: center;
+  font-size: 10pt;
+}
+
+.page-content {
+  padding-top: 5mm;
+  padding-bottom: 5mm;
+  padding-left: 7mm;
+}
+.table-row-2{
+  border: 1px black solid;
+  padding: 0;
+}
+td span.vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+table tr td.noborder, table tr.noborder > td {
+  border: none;
+}
+.title-foot{
+  text-align: center;
+  font-size: 11pt;
+}
+
+.test{
+  position: absolute;
+  padding: 1px;
+  bottom: 1.2rem!important;
+  left: 1mm;
+}

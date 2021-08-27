@@ -1,32 +1,166 @@
 <div repPageA4="portrait" class="gost2-106-96">
-    <div #pagediv class="page-content">
-        <table class="gost2-106-96">
+    <div style="display: flex">
+        <div *ngIf="false" >
+            <table class="gost2-106-96" style="border: none; width: 12mm;">
             <colgroup>
-                <col style="width: 6mm">
-                <col style="width: 6mm">
-                <col style="width: 8mm">
-                <col style="width: 70mm">
-                <col style="width: 63mm">
-                <col style="width: 10mm">
-                <col style="width: 22mm">
+                <col style="width: 5mm">
+                <col style="width: 7mm">
             </colgroup>
 
-            <thead #header>
-                <tr style="text-align: center">
-                    <td><span class="vertical-bt-tp">Формат</span></td>
-                    <td><span class="vertical-bt-tp">Зона</span></td>
-                    <td><span class="vertical-bt-tp">Поз.</span></td>
-                    <td>Обозначение</td>
-                    <td>Наименование</td>
-                    <td><span class="vertical-bt-tp">Кол.</span></td>
-                    <td style="white-space: normal">Приме-чание</td>
+            <tr style="height: 50mm">
+                <td repVerticalCell style="text-align: center;">
+                    Перв. примен.
+                </td>
+                <td style="font-size: 10pt; height: 32mm; border-right: none "></td>
+            </tr>
+            <tr style="height: 50mm">
+                <td repVerticalCell style="text-align: center; ">
+                    Справ. №
+                </td>
+                <td style="font-size: 10pt; height: 32mm; border-right: none "></td>
+            </tr>
+
+            <tr style="height: 27mm">
+                <td colspan="2" style="font-size: 10pt; border: none;"></td>
+            </tr>
+
+            <tr style="height: 32mm">
+                <td repVerticalCell style="text-align: center">
+                    Подп. и дата
+                </td>
+                <td style="font-size: 10pt; border-right: none "></td>
+            </tr>
+            <tr style="height: 32mm">
+                <td repVerticalCell style="text-align: center">
+                    Инв.№ дубл.
+                </td>
+                <td style="font-size: 10pt; border-right: none "></td>
+            </tr>
+            <tr style="height: 32mm">
+                <td repVerticalCell style="text-align: center">
+                    Взам.инв.№
+                </td>
+                <td style="font-size: 10pt; border-right: none "></td>
+            </tr>
+            <tr style="height: 32mm">
+                <td repVerticalCell style="text-align: center">
+                    Подп. и дата
+                </td>
+                <td style="font-size: 10pt; border-right: none "></td>
+            </tr>
+            <tr style="height: 32mm">
+                <td repVerticalCell style="text-align: center">
+                    Инв.№ подл
+                </td>
+                <td style="font-size: 10pt; border-right: none "></td>
+            </tr>
+        </table>
+        </div>
+
+        <div *ngIf="completed" class="gost2-106-96-side-cells">
+            <table class="gost2-106-96" style="border: none">
+                <colgroup>
+                    <col style="width: 32mm" />
+                    <col style="width: 32mm" />
+                    <col style="width: 32mm" />
+                    <col style="width: 32mm" />
+                    <col style="width: 32mm" />
+<!--                    Потребовалось уменьшить ширину ячейки -->
+                    <col style="width: 26.2mm" />
+                    <col style="width: 50mm" />
+                    <col style="width: 50mm" />
+                </colgroup>
+                <tr style="height: 7mm">
+                    <td>Инв.№ подл</td>
+                    <td>Подп. и дата</td>
+                    <td>Взам.инв.№</td>
+                    <td>Инв.№ дубл.</td>
+                    <td>Подп. и дата</td>
+                    <td rowspan="2" style="border: none"></td>
+                    <td>Справ. №</td>
+                    <td>Перв. примен.</td>
                 </tr>
-            </thead>
+                <tr style="height: 5mm">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
 
-            <ng-container *ngFor="let item of page.items; let index = index">
-                <tbody #content>
-                    <ng-container *ngIf="startGroup(item, index)">
-                        <tr>
+        <div style="width: 185mm; " >
+            <table class="gost2-106-96">
+                <colgroup>
+                    <col style="width: 6mm; text-align: center">
+                    <col style="width: 6mm; text-align: center">
+                    <col style="width: 8mm; text-align: center">
+                    <col style="width: 70mm">
+                    <col style="width: 63mm">
+                    <col style="width: 10mm; text-align: center">
+                    <col style="width: 22mm">
+                </colgroup>
+
+                <thead #header>
+                    <tr style="text-align: center">
+                        <td><span class="vertical-bt-tp">Формат</span></td>
+                        <td><span class="vertical-bt-tp">Зона</span></td>
+                        <td><span class="vertical-bt-tp">Поз.</span></td>
+                        <td>Обозначение</td>
+                        <td>Наименование</td>
+                        <td><span class="vertical-bt-tp">Кол.</span></td>
+                        <td style="white-space: normal">Приме-<br/>чание</td>
+                    </tr>
+                </thead>
+
+                <ng-container *ngFor="let item of page.items; let index = index">
+                    <tbody #content>
+                        <ng-container *ngIf="startGroup(item, index)">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="font-weight: bold; text-align: center; text-decoration: underline;">{{item.content.title}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </ng-container>
+
+                        <tr repMultirow>
+                            <td style="text-align: center;">{{item.content.format}}</td>
+                            <td style="text-align: center;">{{item.content.zone}}</td>
+                            <td style="text-align: center;">{{item.content.pozition}}</td>
+                            <td>{{item.content.note}}</td>
+                            <td>{{item.content.name}}</td>
+                            <td style="text-align: center;">{{item.content.qnt}}</td>
+                            <td>{{item.content.comment}}</td>
+                        </tr>
+
+                        <tr #standartRow>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -35,17 +169,11 @@
                             <td></td>
                             <td></td>
                         </tr>
+                    </tbody>
+                </ng-container>
 
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="font-weight: bold; text-align: center; text-decoration: underline;">{{item.content.CLASSIF}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
+                <tbody>
+                    <ng-container *ngFor="let line of emptyLines">
                         <tr>
                             <td></td>
                             <td></td>
@@ -56,49 +184,15 @@
                             <td></td>
                         </tr>
                     </ng-container>
-
-                    <tr repMultirow>
-                        <td>{{item.content.FORMAT}}</td>
-                        <td>{{item.content.ZONE}}</td>
-                        <td>{{item.content.POSITION}}</td>
-                        <td>{{item.content.NOTE}}</td>
-                        <td>{{item.content.NAME}}</td>
-                        <td>{{item.content.QUANTITY}}</td>
-                        <td>{{item.content.COMMENT}}</td>
-                    </tr>
-
-                    <tr #standartRow>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
                 </tbody>
-            </ng-container>
-
-            <tbody>
-                <ng-container *ngFor="let line of emptyLines">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </ng-container>
-            </tbody>
-        </table>
-        <div class="empty-space" *ngIf="emptySpace > 0" [style]="{height: emptySpace + 'px'}"></div>
-        <div #footer>
-            <app-gost-tfoot [name]="page.content.NAME"
-                            [note]="page.content.NOTE"
-                            [numPage]="index + 1"
-                            [numPages]="pf.pages.length"></app-gost-tfoot>
+            </table>
+            <div class="empty-space" [style]="{height: emptySpace}"></div>
+            <div #footer>
+                <app-gost-tfoot [name]="page.content.name"
+                                [note]="page.content.note"
+                                [numPage]="index + 1"
+                                [numPages]="pf.pages.length"></app-gost-tfoot>
+            </div>
         </div>
     </div>
 </div>
