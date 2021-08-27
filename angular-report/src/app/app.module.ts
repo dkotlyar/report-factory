@@ -19,10 +19,6 @@ import {MskdReportComponent} from './reports/mskd-report/mskd-report/mskd-report
 import {MskdReportTemplateComponent} from './reports/mskd-report/mskd-report-template/mskd-report-template.component';
 import { MskdReportLargeComponent } from './reports/mskd-report/mskd-report-large/mskd-report-large.component';
 import { MskdTestComponent } from './reports/mskd-report/mskd-test/mskd-test.component';
-import {SpecificationComponent} from './reports/specification/specification.component';
-import {TempSpecComponent} from './reports/specification/temp-spec/temp-spec.component';
-import {SpecTableComponent} from './reports/specification/spec-table/spec-table.component';
-import {ReportSpecComponent} from './reports/report-spec/report-spec.component';
 
 const appRoutes: Routes = [
   {path: '', component: ReadmeComponent},
@@ -34,7 +30,6 @@ const appRoutes: Routes = [
   {path: 'mskd', component: MskdTestComponent},
   {path: 'mskd/:id', component: MskdReportComponent},
   {path: 'mskd-large/:id', component: MskdReportLargeComponent},
-  {path: 'sveta-spec', component: ReportSpecComponent},
 ];
 
 @NgModule({
@@ -54,10 +49,6 @@ const appRoutes: Routes = [
       MskdReportTemplateComponent,
       MskdReportLargeComponent,
       MskdTestComponent,
-      SpecificationComponent,
-      TempSpecComponent,
-      SpecTableComponent,
-      ReportSpecComponent
   ],
   imports: [
     BrowserModule,

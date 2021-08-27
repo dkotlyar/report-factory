@@ -1,98 +1,68 @@
 <div repPageA4="portrait" class="gost2-106-96">
     <div style="display: flex">
-        <div *ngIf="false" >
-            <table class="gost2-106-96" style="border: none; width: 12mm;">
-            <colgroup>
-                <col style="width: 5mm">
-                <col style="width: 7mm">
-            </colgroup>
-
-            <tr style="height: 50mm">
-                <td repVerticalCell style="text-align: center;">
-                    Перв. примен.
-                </td>
-                <td style="font-size: 10pt; height: 32mm; border-right: none "></td>
-            </tr>
-            <tr style="height: 50mm">
-                <td repVerticalCell style="text-align: center; ">
-                    Справ. №
-                </td>
-                <td style="font-size: 10pt; height: 32mm; border-right: none "></td>
-            </tr>
-
-            <tr style="height: 27mm">
-                <td colspan="2" style="font-size: 10pt; border: none;"></td>
-            </tr>
-
-            <tr style="height: 32mm">
-                <td repVerticalCell style="text-align: center">
-                    Подп. и дата
-                </td>
-                <td style="font-size: 10pt; border-right: none "></td>
-            </tr>
-            <tr style="height: 32mm">
-                <td repVerticalCell style="text-align: center">
-                    Инв.№ дубл.
-                </td>
-                <td style="font-size: 10pt; border-right: none "></td>
-            </tr>
-            <tr style="height: 32mm">
-                <td repVerticalCell style="text-align: center">
-                    Взам.инв.№
-                </td>
-                <td style="font-size: 10pt; border-right: none "></td>
-            </tr>
-            <tr style="height: 32mm">
-                <td repVerticalCell style="text-align: center">
-                    Подп. и дата
-                </td>
-                <td style="font-size: 10pt; border-right: none "></td>
-            </tr>
-            <tr style="height: 32mm">
-                <td repVerticalCell style="text-align: center">
-                    Инв.№ подл
-                </td>
-                <td style="font-size: 10pt; border-right: none "></td>
-            </tr>
-        </table>
-        </div>
-
         <div *ngIf="completed" class="gost2-106-96-side-cells">
-            <table class="gost2-106-96" style="border: none">
+            <table class="gost2-106-96" style="border: none; width: 12mm;">
                 <colgroup>
-                    <col style="width: 32mm" />
-                    <col style="width: 32mm" />
-                    <col style="width: 32mm" />
-                    <col style="width: 32mm" />
-                    <col style="width: 32mm" />
-<!--                    Потребовалось уменьшить ширину ячейки -->
-                    <col style="width: 26.2mm" />
-                    <col style="width: 50mm" />
-                    <col style="width: 50mm" />
+                    <col style="width: 5mm">
+                    <col style="width: 7mm">
                 </colgroup>
-                <tr style="height: 7mm">
-                    <td>Инв.№ подл</td>
-                    <td>Подп. и дата</td>
-                    <td>Взам.инв.№</td>
-                    <td>Инв.№ дубл.</td>
-                    <td>Подп. и дата</td>
-                    <td rowspan="2" style="border: none"></td>
-                    <td>Справ. №</td>
-                    <td>Перв. примен.</td>
+
+                <tr style="height: 50mm">
+                    <td repVerticalCell style="text-align: center;">
+                        Перв. примен.
+                    </td>
+                    <td style="font-size: 10pt; height: 32mm; border-right: none "></td>
                 </tr>
-                <tr style="height: 5mm">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr style="height: 50mm">
+                    <td repVerticalCell style="text-align: center; ">
+                        Справ. №
+                    </td>
+                    <td style="font-size: 10pt; height: 32mm; border-right: none "></td>
+                </tr>
+            </table>
+
+            <div></div>
+
+            <table class="gost2-106-96" style="border: none; width: 12mm;">
+                <colgroup>
+                    <col style="width: 5mm">
+                    <col style="width: 7mm">
+                </colgroup>
+
+                <tr style="height: 32mm">
+                    <td repVerticalCell style="text-align: center">
+                        Подп. и дата
+                    </td>
+                    <td style="font-size: 10pt; border-right: none "></td>
+                </tr>
+                <tr style="height: 32mm">
+                    <td repVerticalCell style="text-align: center">
+                        Инв.№ дубл.
+                    </td>
+                    <td style="font-size: 10pt; border-right: none "></td>
+                </tr>
+                <tr style="height: 32mm">
+                    <td repVerticalCell style="text-align: center">
+                        Взам.инв.№
+                    </td>
+                    <td style="font-size: 10pt; border-right: none "></td>
+                </tr>
+                <tr style="height: 32mm">
+                    <td repVerticalCell style="text-align: center">
+                        Подп. и дата
+                    </td>
+                    <td style="font-size: 10pt; border-right: none "></td>
+                </tr>
+                <tr style="height: 32mm">
+                    <td repVerticalCell style="text-align: center">
+                        Инв.№ подл
+                    </td>
+                    <td style="font-size: 10pt; border-right: none "></td>
                 </tr>
             </table>
         </div>
 
-        <div style="width: 185mm; " >
+        <div class="gost2-106-96-spec" >
             <table class="gost2-106-96">
                 <colgroup>
                     <col style="width: 6mm; text-align: center">
@@ -186,7 +156,7 @@
                     </ng-container>
                 </tbody>
             </table>
-            <div class="empty-space" [style]="{height: emptySpace}"></div>
+            <div class="empty-space"></div>
             <div #footer>
                 <app-gost-tfoot [name]="page.content.name"
                                 [note]="page.content.note"

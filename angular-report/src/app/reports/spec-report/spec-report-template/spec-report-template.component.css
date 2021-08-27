@@ -55,13 +55,29 @@ table.gost2-106-96 td {
     width: 12mm;
     height: 287mm;
     margin-right: -0.5mm;
+    display: flex;
+    flex-direction: column;
+}
+.gost2-106-96-side-cells > div {
+    flex: 1 1 auto;
 }
 .gost2-106-96-side-cells table {
-    transform: rotate(-90deg) translate(-100%, 0);
-    transform-origin: top left;
+    /*transform: rotate(-90deg) translate(-100%, 0);*/
+    /*transform-origin: top left;*/
     text-align: center;
+    vertical-align: center;
 }
 
-.gost2-106-96-side-cells table tr:last-child td {
-    border-bottom: none;
+/*.gost2-106-96-side-cells table tr:last-child td {*/
+/*    border-bottom: none;*/
+/*}*/
+
+.gost2-106-96-spec {
+    width: 185mm;
+    display: flex;
+    flex-direction: column;
+}
+
+.gost2-106-96-spec .empty-space {
+    flex: 1 1 auto;
 }
