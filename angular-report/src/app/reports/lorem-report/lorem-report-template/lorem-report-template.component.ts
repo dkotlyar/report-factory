@@ -8,38 +8,18 @@ import {
   ViewChildren
 } from '@angular/core';
 import {Page} from '../../../../../projects/report-lib/src/lib/classes/pojo/page';
+import {BaseReportTemplateComponent} from '../../../../../projects/report-lib/src/lib/base-report-template/base-report-template.component';
 
 @Component({
   selector: 'app-lorem-report-template',
   templateUrl: './lorem-report-template.component.html',
   styleUrls: ['./lorem-report-template.component.css']
 })
-export class LoremReportTemplateComponent implements OnInit {
+export class LoremReportTemplateComponent extends BaseReportTemplateComponent implements OnInit {
 
-  @Input() page: Page;
-  @Input() pages: Array<Page>;
-  @Input() index: number;
-
-  @ViewChild('pagediv')
-  set pagediv(page: ElementRef) {
-    this.page.page = page;
+  constructor() {
+    super();
   }
-  @ViewChild('header')
-  set header(header: ElementRef) {
-    this.page.header = header;
-  }
-  @ViewChild('footer')
-  set footer(footer: ElementRef) {
-    this.page.footer = footer;
-  }
-  @ViewChildren('content')
-  set content(components: QueryList<ElementRef>) {
-    this.page.components = components;
-    // console.log('change content', this.index);
-    this.page.componentsUpdated.emit();
-  }
-
-  constructor() { }
 
   ngOnInit(): void {
     this.page.minimumFreeHeight = 100;

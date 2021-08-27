@@ -15,10 +15,10 @@
     </div>
 
     <div #footer class="footer">
-      <div *ngIf="index == pages.length - 1" class="last-page-footer">
+      <div *ngIf="index == pf.pages.length - 1" class="last-page-footer">
         Последняя страница
       </div>
-      Страница {{index+1}} / {{pages.length}}
+      Страница {{index+1}} / {{pf.pages.length}}
     </div>
   </div>
 </div>
