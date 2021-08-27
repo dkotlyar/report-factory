@@ -5,6 +5,8 @@ import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 })
 export class PageA4Directive implements OnInit{
 
+  public pageContent: HTMLDivElement;
+
   @Input() set repPageA4(orientation: 'portrait' | 'landscape') {
     this.el.nativeElement.classList.remove('report-landscape');
     this.el.nativeElement.classList.remove('report-portrait');
@@ -26,10 +28,14 @@ export class PageA4Directive implements OnInit{
     const pageWrapper = document.createElement('div');
     pageWrapper.classList.add('page');
 
+    const pageContentWrapper = document.createElement('div');
+    pageContentWrapper.classList.add('page-content');
+
     while (this.el.nativeElement.hasChildNodes()) {
-      pageWrapper.append(this.el.nativeElement.firstChild);
+      pageContentWrapper.append(this.el.nativeElement.firstChild);
     }
 
+    pageWrapper.append(pageContentWrapper);
     printPage.append(pageWrapper);
     this.el.nativeElement.append(printPage);
     this.el.nativeElement.classList.add('component-wrapper-a4');
@@ -37,9 +43,12 @@ export class PageA4Directive implements OnInit{
     this.el.nativeElement.getAttributeNames()
         .filter(n => n.startsWith('_ngcontent'))
         .forEach(attr => {
+          pageContentWrapper.setAttribute(attr, '');
           pageWrapper.setAttribute(attr, '');
           printPage.setAttribute(attr, '');
         });
+
+    this.pageContent = pageContentWrapper;
   }
 
 
