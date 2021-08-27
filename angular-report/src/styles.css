@@ -3,3 +3,10 @@
 
 /*@import '~report-lib/index.css';*/
 @import '../dist/report-lib/index.css';
+
+
+/*@import "~bootstrap/dist/css/bootstrap.css";*/
+/*@font-face {*/
+/*    font-family: gostA; !* Гарнитура шрифта *!*/
+/*    src: url(assets/font/GostARegular.ttf); !* Путь к файлу со шрифтом *!*/
+/*}*/

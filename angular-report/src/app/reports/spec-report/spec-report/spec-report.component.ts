@@ -3,6 +3,7 @@ import {SpecService} from '../../../services/spec.service';
 import {PagesFactory} from 'report-lib';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import {DataService} from '../../../services/data.service';
 
 @Component({
     selector: 'app-spec-report',
@@ -14,20 +15,16 @@ export class SpecReportComponent implements OnInit {
     pagesFactory: PagesFactory;
     error: HttpErrorResponse;
 
-    constructor(private spec: SpecService,
+    constructor(private spec: DataService,
                 private activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit(): void {
         const id = this.activatedRoute.snapshot.params.id;
 
-        this.spec.getReportData(id)
+        this.spec.getLocalReportJson(id)
             .then(data => {
-                const content = {
-                    NAME: data[0].SPEC_NMK_NAME,
-                    NOTE: data[0].SPEC_NMK_NOTE
-                };
-                this.pagesFactory = new PagesFactory(data, content);
+                this.pagesFactory = new PagesFactory(data.list, data.title);
                 this.pagesFactory.splitPages();
             })
             .catch(e => this.error = e);
