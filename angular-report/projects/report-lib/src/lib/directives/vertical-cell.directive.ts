@@ -9,14 +9,21 @@ export class VerticalCellDirective implements OnInit {
 
   ngOnInit(): void {
     const el = this.elementRef.nativeElement;
+    const width = el.style.width;
+    const height = el.style.height || el.parentElement.style.height;
+
     const wrap = document.createElement('span');
     wrap.style.display = 'inline-block';
     wrap.style.position = 'absolute';
     wrap.style.transform = 'rotate(-90deg) translate(-100%, 0)';
     wrap.style.transformOrigin = 'top left';
+    wrap.style.height = width;
+    wrap.style.width = height;
     const wrap2 = document.createElement('span');
     wrap2.style.writingMode = 'vertical-rl';
     wrap2.style.visibility = 'hidden';
+    wrap2.style.width = width;
+    wrap2.style.height = height;
 
     el.childNodes.forEach((node, index, items) => {
       const clon = node.cloneNode(true);

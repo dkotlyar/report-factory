@@ -29,7 +29,6 @@ export class SpecReportTemplateComponent extends BaseReportTemplateComponent imp
 
     this.pf.completedEvent.subscribe(() => {
       this.completed = true;
-      console.log(this.page);
     });
   }
 
@@ -65,8 +64,9 @@ export class SpecReportTemplateComponent extends BaseReportTemplateComponent imp
     if (this.page.freeHeight === undefined) {
       return '0px';
     }
-    console.log(this.page.freeHeight, this.emptyLines.length);
-    return this.page.freeHeight - this.emptyLines.reduce((a, b) => a + b, 0) + 'px';
+    return '0px';
+    // return (this.page.freeHeight - this.emptyLines.reduce((a, b) => a + b, 0)) + 'px';
+    return (this.page.freeHeight - this.emptyLines.reduce((a, b) => a + b, 0)) * 0.26 + 'mm';
     // return 287 - this.emptyLines.length + 'mm';
   }
 }
